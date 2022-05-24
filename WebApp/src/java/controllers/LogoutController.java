@@ -13,51 +13,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import user.UserDAO;
-import user.UserDTO;
 
 /**
  *
  * @author nguye
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "LogoutController", urlPatterns = {"/LogoutController"})
+public class LogoutController extends HttpServlet {
 
-    private static final String ERROR ="login.jsp";
-    private static final String US ="US";
-    private static final String USER_PAGE ="user.jsp";
-    private static final String AD ="AD";
-    private static final String ADMIN_PAGE ="admin.jsp";
+    private static final String ERROR = "login.jsp";
+    private static final String SUCCESS = "login.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String url =ERROR;
+        String url = ERROR;
         try {
-            String userID = request.getParameter("userID");
-            String password = request.getParameter("password");
-            UserDAO dao = new UserDAO();
-            UserDTO loginUser = dao.checkLogin(userID, password);
-            if(loginUser!=null){
-                //phân quyền
-                HttpSession session = request.getSession();
-                session.setAttribute("LOGIN_USER", loginUser);
-                String roleID = loginUser.getRoleID();
-                if(AD.equals(roleID)){
-                    url=ADMIN_PAGE;
-                }else if(US.equals(roleID)){
-                    url = USER_PAGE;
-                }else{
-                    request.setAttribute("ERROR", "Your role is not support!");
-                }
-            }else{
-                //không có user or sai pass
-                request.setAttribute("ERROR", "Incorrect ID or password");
+            HttpSession session = request.getSession(false);
+            if(session!=null){
+                session.invalidate();
+                url = SUCCESS;
             }
         } catch (Exception e) {
-            log("Error at LoginController: "+e.toString());
+            log("Error at LogoutController: "+e.toString());
         }finally{
-            request.getRequestDispatcher(url).forward(request, response);
+            response.sendRedirect(url);
         }
     }
 

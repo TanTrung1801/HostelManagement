@@ -1,6 +1,6 @@
 <%-- 
-    Document   : admin
-    Created on : May 23, 2022, 11:31:49 AM
+    Document   : user
+    Created on : May 24, 2022, 8:27:52 AM
     Author     : nguye
 --%>
 
@@ -10,28 +10,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Admin Page</title>
+        <title>User Page</title>
     </head>
-    <body>
-        
+    <body>    
         <%
             UserDTO loginUser = (UserDTO)session.getAttribute("LOGIN_USER");
-            if(loginUser==null || !loginUser.getRoleID().equals("AD")){
+            if(loginUser==null || !loginUser.getRoleID().equals("US")){
                 response.sendRedirect("login.jsp");
                 return;
             }
             %>
-        <h1>Welcome: ${sessionScope.LOGIN_USER.getFullName()} </h1>
+            <h1>Welcome: ${sessionScope.LOGIN_USER.getFullName()} </h1>
         <form action="MainController">
                 <input type="submit" name="action" value="Logout"/>
-        </form>    
-            
-           
-            
-        
-            
-            
-            
-            
+        </form>
     </body>
 </html>

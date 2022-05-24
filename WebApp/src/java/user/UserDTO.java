@@ -11,16 +11,22 @@ package user;
  */
 public class UserDTO {
     private String userID;
-    private String password;
     private String fullName;
+    private String roleID;
+    private String password;
 
     public UserDTO() {
+        this.userID = "";
+        this.fullName = "";
+        this.roleID = "";
+        this.password = "";
     }
 
-    public UserDTO(String userID, String password, String fullName) {
+    public UserDTO(String userID, String fullName, String roleID, String password) {
         this.userID = userID;
-        this.password = password;
         this.fullName = fullName;
+        this.roleID = roleID;
+        this.password = password;
     }
 
     public String getUserID() {
@@ -31,14 +37,6 @@ public class UserDTO {
         this.userID = userID;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getFullName() {
         return fullName;
     }
@@ -46,6 +44,21 @@ public class UserDTO {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-    
+
+    public String getRoleID() {
+        return roleID;
+    }
+
+    public void setRoleID(String roleID) {
+        this.roleID = roleID;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     
 }

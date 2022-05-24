@@ -16,9 +16,12 @@ import utl.DBUtils;
  * @author nguye
  */
 public class UserDAO {
-    private static final String LOGIN = "SELECT fullName FROM tblUsers WHERE userID=? AND password=?";
+    private static final String LOGIN = "SELECT fullName, roleID FROM tblUsers WHERE userID=? AND password =?";
     
-    public UserDTO checkLogin(String userID, String password) throws SQLException{
+    
+    
+    
+public UserDTO checkLogin(String userID, String password) throws SQLException {
         UserDTO user = null;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -33,7 +36,7 @@ public class UserDAO {
                 if (rs.next()) {
                     String fullName = rs.getString("fullName");
                     String roleID = rs.getString("roleID");
-                    user = new UserDTO(userID, "", fullName);
+                    user = new UserDTO(userID, fullName, roleID, "");
                 }
             }
         } catch (Exception e) {
@@ -50,6 +53,6 @@ public class UserDAO {
             }
         }
         return user;
-        
     }
+    
 }

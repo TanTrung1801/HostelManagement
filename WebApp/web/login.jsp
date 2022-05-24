@@ -19,7 +19,7 @@
                 <input type="submit" name="action" value="Login"/>
                 <input type="reset" value="Reset"/>
             </form>
-            
+            ${requestScope.ERROR}
         </h1>
         <h2>
             <a href="register.jsp">Register</a>

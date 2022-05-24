@@ -13,14 +13,25 @@
         <title>Admin Page</title>
     </head>
     <body>
-        <h1>ADMIN</h1>
+        
         <%
             UserDTO loginUser = (UserDTO)session.getAttribute("LOGIN_USER");
-            if(loginUser == null){
+            if(loginUser==null || !loginUser.getRoleID().equals("AD")){
                 response.sendRedirect("login.jsp");
                 return;
             }
             %>
-            <%= loginUser.getFullName() %>
+        <h1>Welcome: ${sessionScope.LOGIN_USER.getFullName()} </h1>
+        <form action="MainController">
+                <input type="submit" name="action" value="Logout"/>
+        </form>    
+            
+           
+            
+        
+            
+            
+            
+            
     </body>
 </html>
