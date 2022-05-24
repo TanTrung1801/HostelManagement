@@ -4,7 +4,7 @@
     Author     : nguye
 --%>
 
-<%@page import="user.UserDTO"%>
+<%@page import="dto.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

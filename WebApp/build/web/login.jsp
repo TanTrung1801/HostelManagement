@@ -12,15 +12,23 @@
         <title>Login Page</title>
     </head>
     <body>
-        <h1>
-            <form action="MainController" method="POST">
+        <form action="MainController" method="POST">
+            User ID </br>
                 <input type="text" name="userID" required="" placeholder="Input your ID"/></br>
+            Password </br> 
                 <input type="password" name="password" required="" placeholder="Input your password"/><br>
                 <input type="submit" name="action" value="Login"/>
                 <input type="reset" value="Reset"/>
             </form>
+            
+        <h1>
             ${requestScope.ERROR}
         </h1>
+        
+        <form action="MainController" method="POST">
+            <input type="submit" name="action" value="Login with google"/>
+        </form>
+        
         <h2>
             <a href="register.jsp">Register</a>
         </h2>
