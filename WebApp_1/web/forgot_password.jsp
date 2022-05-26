@@ -16,7 +16,7 @@
 					<div class="card-body">
 						<div class="form-group">
 							<label for="email-for-pass">Enter your email address</label> 
-                                                        <input class="form-control" type="text" name="email" id="email-for-pass" required=""></br>
+                                                        <input class="form-control" type="email" name="email" id="email-for-pass" required=""></br>
                                                         
 						</div>
 					</div>
@@ -27,5 +27,8 @@
 							Login</button>
 					</div>
 				</form>
+        
+        
+        ${requestScope.ERROR}
     </body>
 </html>

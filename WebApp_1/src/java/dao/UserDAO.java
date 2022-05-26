@@ -23,6 +23,7 @@ public class UserDAO {
 
     private static final String LOGIN = "SELECT fullName, roleID, email, phoneNumber, IDcard, DoB, status FROM tblUsers WHERE userID=? AND password =?";
     private static final String CHECK_DUPLICATE = "SELECT fullName FROM tblUsers WHERE userID=?";
+    private static final String CHECK_Email_DUPLICATE = "SELECT fullName FROM tblUsers WHERE email=?";
     private static final String CREATE = "INSERT INTO tblUsers(userID, password, roleID, fullName, email, phoneNumber, IDcard, DoB, status) VALUES(?,?,?,?,?,?,?,?,?)";
     private static final String SEARCH_ALL = "SELECT userID, roleID, fullName, email, phoneNumber, IDcard, DoB, status FROM tblUsers";
     
@@ -77,6 +78,37 @@ public class UserDAO {
             if(conn != null){
                 ptm = conn.prepareStatement(CHECK_DUPLICATE);
                 ptm.setString(1, userID);
+                rs = ptm.executeQuery();
+                if(rs.next()){
+                    check = true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+    
+    public boolean checkEmailDuplicate(String email) throws SQLException{
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if(conn != null){
+                ptm = conn.prepareStatement(CHECK_Email_DUPLICATE);
+                ptm.setString(1, email);
                 rs = ptm.executeQuery();
                 if(rs.next()){
                     check = true;
