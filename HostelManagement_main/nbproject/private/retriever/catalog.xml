@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd" uri="www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd"/>
+    <system systemId="http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd" uri="www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd"/>
+    <system systemId="http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd" uri="www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd"/>
+</catalog>
