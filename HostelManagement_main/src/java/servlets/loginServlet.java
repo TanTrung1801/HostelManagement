@@ -61,7 +61,7 @@ public class loginServlet extends HttpServlet {
                     else request.setAttribute("ERROR", "Account not found! Please check your username, email or phone number again");
                 }
                 else request.setAttribute("ERROR", "Please enter the required fields!");
-                request.setAttribute("pageTitle", "home");
+                request.setAttribute("pageTitle", "Login");
                 request.setAttribute("pageContent", "loginForm.jsp");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }

@@ -37,6 +37,12 @@ public class loginController extends HttpServlet {
             String processingPath = (String) request.getAttribute("processingPath");
 
             String[] splitter = processingPath.split("/");
+            
+            if(session.getAttribute("loginedAccount")!=null){
+                response.sendRedirect("/HostelManagement_main/home");
+                return;
+            }
+            
             if (splitter.length < 2) {
                 request.setAttribute("pageTitle", "Login");
                 request.setAttribute("pageContent", "loginForm.jsp");

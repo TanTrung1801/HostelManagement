@@ -110,6 +110,7 @@ public class mainController implements Filter {
         Throwable problem = null;
         try {
             HttpServletRequest req = (HttpServletRequest) request;
+            HttpServletResponse res = (HttpServletResponse) response;
             HttpSession session = req.getSession();
 
 //            if (session.getAttribute("loginUser") ==null){
@@ -126,12 +127,14 @@ public class mainController implements Filter {
                 String url = "index.jsp";
 
                 if (splitter.length < 3) {
-                    if (session.getAttribute("loginUser") == null) {
-                        request.setAttribute("pageContent", "loginForm.jsp");
-                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                    if (session.getAttribute("loginedAccount") == null) {
+//                        request.setAttribute("pageContent", "loginForm.jsp");
+//                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                        res.sendRedirect("/HostelManagement_main/login");
                         return;
                     } else {
-                        request.getRequestDispatcher("homeController").forward(request, response);
+//                        request.getRequestDispatcher("homeController").forward(request, response);
+                        res.sendRedirect("/HostelManagement_main/home");
                         return;
                     }
                 } else {
