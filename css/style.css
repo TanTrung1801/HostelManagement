@@ -270,6 +270,10 @@ a, a:hover, a:focus {
     text-decoration: underline;
 }
 
+.form-group {
+    margin-bottom: 1rem
+}
+
 /*
 
 #sidebarCollapse {

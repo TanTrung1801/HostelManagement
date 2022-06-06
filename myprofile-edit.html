@@ -189,47 +189,42 @@
                   <a class="" href="">Edit</a>
                   
               </div>
-<!-- My Profile Form -->
-            <div class="ml-4">
+            <!-- My Profile Form -->
+            
+              
                 
-                  
-                    
                         <div class="form-group">
-                          <label for="fullName">Fullname:</label>
-                          
+                          <label for="fullName">First Name</label>
+                          <input type="text" id="fullName" class="form-control" placeholder="John">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email:</label>
-                            
+                            <label for="email">Last Name</label>
+                            <input type="text" id="email" class="form-control" placeholder="Wick">
                           </div>
                           <div class="form-group">
-                            <label for="phone">Phone:</label>
-                           
+                            <label for="phone">Phone</label>
+                            <input type="text" id="phone" class="form-control" placeholder="012345678">
                           </div>
                     
                 
-               
-                  
-                        <div class="form-group">
-                          <label for="dob">Date of birth:</label>
-                          
-                        </div>
-                        <div class="form-group">
-                            <label for="Idcard">ID Card:</label>
-                            
-                          </div>
-                          
+                
                     
-                    <div class="mt-5 justify-content-center">
-                      <a onclick="confirm()" class="btn btn-danger " style="background-color:rgb(0, 0, 0) ;" href="#">Delete Account</a>
-                      <a class="btn btn-danger " style="background-color:rgb(255, 0, 0) ;" href="myprofile-changepass.html">Change Password</a>
-                      <a class="btn btn-success " style="background-color:green ;" href="myprofile-edit.html">Update</a>
-                      
+                  <div class="form-group">
+                    <label for="input_from"> Date of Birth</label>
+                    <input type="text" class="form-control" id="input">
+                  </div>
+                        <div class="form-group">
+                            <label for="Idcard">ID Card</label>
+                            <input type="text" id="Idcard" class="form-control" placeholder="123456789">
+                          </div>
+                    <div class="mt-5">
+                      <a id="btb" onClick="notiSuccess()" class="btn btn-success " style="background-color:green ;" href="#">Confirm</a>
+                      <p id="success"></p>
                       
                     </div>
-                </div>
                 
-              </div>
+            </div>
+            
 
 
         </div>
@@ -269,7 +264,8 @@
         </div>
 
     </footer>
-
+<!-- Main Javascript -->
+<script src="/js/main.js"></script>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
