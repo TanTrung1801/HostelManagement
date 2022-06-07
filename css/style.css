@@ -279,7 +279,18 @@ a, a:hover, a:focus {
     color: #0015f9;
     text-decoration: underline;
 }
-
+input[type="file"] {
+    display: none;
+}
+input[type="file"]:hover {
+    color: #d05165;
+}
+.custom-file-upload {
+   
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
 
 .form-control:active, .form-control:focus {
     outline: none;
@@ -290,6 +301,7 @@ a, a:hover, a:focus {
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;
     transition: .3s all ease; }
+    
   /* Member List CSS    */
   .card-box {
     padding: 20px;

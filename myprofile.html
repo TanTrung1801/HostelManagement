@@ -13,7 +13,10 @@
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="./css/style.css">
-
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+    rel="stylesheet"
+  />
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
         integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
@@ -178,57 +181,81 @@
                     <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
                     <li class="breadcrumb-item active">My Hostel</li>
                 </ol>
-                <div class="col-12">
-                    <h3>My Hostel</h3>
-                    
-                </div>
+               
             </div>
             <div class="col-md-12 text-center edit-profile pt-5 py-5">
              
                   <img class="rounded mx-auto d-block"style="width:10%" src="./img/icon.png" alt=""> 
-                  <a class="" href="">Edit</a>
+                  <label for="file-upload" class="custom-file-upload">
+                    <i class="fas fa-upload"></i>
+                </label>
+                <input id="file-upload" type="file"/>
                   
               </div>
-<!-- My Profile Form -->
-            <div class="ml-4">
-                
-                  
-                    
-                        <div class="form-group">
-                          <label for="fullName">Fullname:</label>
-                          
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
+                    <!-- My Profile Form -->
+                    <div class="container">
+                        <div class="row">
                             
-                          </div>
-                          <div class="form-group">
-                            <label for="phone">Phone:</label>
-                           
-                          </div>
-                    
-                
-               
-                  
-                        <div class="form-group">
-                          <label for="dob">Date of birth:</label>
-                          
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="fullName">Fullname:</label>     
+                                        <input type="text" id="fullName" class="form-control" placeholder="John" disabled>                 
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>     
+                                        <input type="text" id="email" class="form-control" placeholder="Wick" disabled>                     
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone:</label>      
+                                        <input type="text" id="phone" class="form-control" placeholder="012345678" disabled>
+                                    </div>                    
+                                      
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="dob">Date of birth:</label>
+                                        <input type="text" id="dob" class="form-control" id="input" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="Idcard">ID Card:</label>
+                                      <input type="text" id="Idcard" class="form-control" placeholder="123456789" disabled>
+                                      
+                                    </div>
+                                </div>
+                               
                         </div>
-                        <div class="form-group">
-                            <label for="Idcard">ID Card:</label>
-                            
-                          </div>
-                          
-                    
-                    <div class="mt-5 justify-content-center">
-                      <a onclick="confirm()" class="btn btn-danger " style="background-color:rgb(0, 0, 0) ;" href="#">Delete Account</a>
-                      <a class="btn btn-danger " style="background-color:rgb(255, 0, 0) ;" href="myprofile-changepass.html">Change Password</a>
-                      <a class="btn btn-success " style="background-color:green ;" href="myprofile-edit.html">Update</a>
-                      
-                      
                     </div>
-                </div>
-                
+            
+                <div class="btnu mx-5 mb-5 text-right">
+                    <a class="btn " style="background-color:#628272 ;" href="myprofile-changepass.html">Change Password</a>
+                    <a class="btn btn-success " style="background-color:#628272 ;" href="myprofile-edit.html">Update</a>
+        
+                  </div>
+                <div class="card ">
+                    <h5 class="card-header">Delete Account</h5>
+                    <div class="card-body">
+                      <div class="mb-3 col-12 mb-0">
+                        <div class="alert alert-warning">
+                          <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete your account?</h6>
+                          <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
+                        </div>
+                      </div>
+                      <form id="formAccountDeactivation" onsubmit="return false">
+                        <div class="form-check mb-3">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            name="accountActivation"
+                            id="accountActivation"
+                          />
+                          <label class="form-check-label" for="accountActivation"
+                            >I confirm my account deactivation</label
+                          >
+                        </div>
+                        <button type="submit" class="btn btn-danger deactivate-account">Deactivate Account</button>
+                      </form>
+                    </div>
+                  </div>
               </div>
 
 
