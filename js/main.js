@@ -4,3 +4,8 @@ function notiSuccess() {
     document.getElementById("success").innerHTML = success;
 }
 
+$(function() {
+
+    rome(input, { time: false });
+  
+  });
