@@ -120,7 +120,7 @@ public class mainController implements Filter {
 
             System.out.println("path: " + path);
 
-            if (!path.contains("/css") && !path.contains("/fonts") && !path.contains("/images") && !path.contains("/js") && !path.contains("/vendor")) {
+            if (!path.contains("/css") && !path.contains("/fonts") && !path.contains("/icons") && !path.contains("/images") && !path.contains("/js") && !path.contains("/vendor") && !path.contains("/img") && !path.contains("/node_modules")) {
                 
                 String[] splitter = path.split("/");
 
@@ -144,7 +144,7 @@ public class mainController implements Filter {
                         processingPath = processingPath + "/" + splitter[i];
                     }
                     
-                    System.out.println(processingPath);
+                    System.out.println("processing path:"+processingPath);
                     request.setAttribute("processingPath", processingPath);
 
                     url = splitter[2] + "Controller";

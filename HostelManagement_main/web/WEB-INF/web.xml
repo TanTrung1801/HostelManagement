@@ -32,6 +32,34 @@
         <servlet-name>registerServlet</servlet-name>
         <servlet-class>servlets.registerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adminController</servlet-name>
+        <servlet-class>controllers.adminController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>profileController</servlet-name>
+        <servlet-class>controllers.profileController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>owningController</servlet-name>
+        <servlet-class>controllers.owningController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logoutController</servlet-name>
+        <servlet-class>controllers.logoutController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>servlets.logoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>changePasswordServlet</servlet-name>
+        <servlet-class>servlets.changePasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createHostelServlet</servlet-name>
+        <servlet-class>servlets.createHostelServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>testServlet</servlet-name>
         <url-pattern>/testServlet</url-pattern>
@@ -55,6 +83,34 @@
     <servlet-mapping>
         <servlet-name>registerServlet</servlet-name>
         <url-pattern>/registerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminController</servlet-name>
+        <url-pattern>/adminController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>profileController</servlet-name>
+        <url-pattern>/profileController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>owningController</servlet-name>
+        <url-pattern>/owningController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutController</servlet-name>
+        <url-pattern>/logoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changePasswordServlet</servlet-name>
+        <url-pattern>/changePasswordServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createHostelServlet</servlet-name>
+        <url-pattern>/createHostelServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

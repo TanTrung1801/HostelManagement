@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,9 +33,16 @@ public class registerController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
             String processingPath = (String) request.getAttribute("processingPath");
 
             String[] splitter = processingPath.split("/");
+            
+            if(session.getAttribute("loginedAccount")!=null){
+                response.sendRedirect("/HostelManagement_main/home");
+                return;
+            }
+            
             if (splitter.length < 2) {
                 request.setAttribute("pageTitle", "Register");
                 request.setAttribute("pageContent", "registerForm.jsp");

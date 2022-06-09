@@ -5,12 +5,15 @@
  */
 package controllers;
 
+import daos.AccountDAO;
+import dtos.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,15 +35,61 @@ public class homeController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet homeController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet homeController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            HttpSession session = request.getSession();
+            String processingPath = (String) request.getAttribute("processingPath");
+
+            String[] splitter = processingPath.split("/");
+            
+            if(session.getAttribute("loginedAccount")==null){
+                response.sendRedirect("/HostelManagement_main/login");
+                return;
+            }
+            
+            String[] indexNames ={"account_id"};
+            int id = (Integer) session.getAttribute("loginedAccount");
+            Account acc = AccountDAO.getAccount(indexNames, id+"");
+            switch (acc.getStatus()){
+                case 0:
+                    request.setAttribute("pageTitle", "Home");
+                    request.setAttribute("pageContent", "disabledAccount.jsp");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    return;
+                    
+                case 1:
+                    request.setAttribute("pageTitle", "Home");
+                    request.setAttribute("pageContent", "verifyOTP.jsp");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    return;
+                    
+                case 2:
+                    if(acc.getRole()==0){
+                        request.setAttribute("pageTitle", "Home");
+                        request.setAttribute("pageContent", "home.jsp");
+                        
+                        if (splitter.length < 2) {
+                            request.setAttribute("homeContent", "default");
+                            request.getRequestDispatcher("index.jsp").forward(request, response);
+                            return;
+                        } else {      
+//                            processingPath = splitter[1];
+//                            for (int processingPathi = 2; i < splitter.length; i++) {
+//                                processingPath = processingPath + "/" + splitter[i];
+//                            }
+                            System.out.println("processing path: " + processingPath);
+
+                            request.setAttribute("processingPath", processingPath);
+                            request.getRequestDispatcher(splitter[1] + "Controller").forward(request, response);
+                            return;
+                        }
+                    }
+                    else{
+                        response.sendRedirect("/HostelManagement_main/admin");
+                        return;
+                    }
+                    
+                default:
+                    response.setStatus(404);
+            }
         }
     }
 

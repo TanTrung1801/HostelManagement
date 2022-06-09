@@ -5,6 +5,7 @@
  */
 package utilities;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -12,7 +13,7 @@ import java.sql.DriverManager;
  *
  * @author lekha
  */
-public class DatabaseConnection {
+public class DatabaseConnection implements Serializable {
     public static Connection makeConnection() throws Exception {
         String url = "jdbc:mysql://localhost:3306/hostelmanagement";
         String user = "root";

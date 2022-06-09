@@ -47,7 +47,7 @@ public class loginServlet extends HttpServlet {
             
             String indexNames[] = {"username", "email", "phone"};
             try{
-                if(indexValue != null && password != null){
+                if(indexValue != null && password != null && !indexValue.equals("") && !password.equals("")){
                     Account acc = AccountDAO.getAccount(indexNames, indexValue);
                     if(acc!=null){
                         if(validatePassword(password, acc.getHashedPassword())){
@@ -60,7 +60,7 @@ public class loginServlet extends HttpServlet {
                     }
                     else request.setAttribute("ERROR", "Account not found! Please check your username, email or phone number again");
                 }
-                else request.setAttribute("ERROR", "Please enter the required fields!");
+                else request.setAttribute("ERROR", "Please enter all the required fields!");
                 request.setAttribute("pageTitle", "Login");
                 request.setAttribute("pageContent", "loginForm.jsp");
                 request.getRequestDispatcher("index.jsp").forward(request, response);

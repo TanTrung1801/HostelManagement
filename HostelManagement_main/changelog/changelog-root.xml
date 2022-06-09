@@ -103,7 +103,7 @@
             <column name="city" type="VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci">
                 <constraints nullable="false"/>
             </column>
-            <column name="distrinct" type="VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci">
+            <column name="district" type="VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci">
                 <constraints nullable="false"/>
             </column>
             <column name="ward" type="VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci">
@@ -218,7 +218,7 @@
         <addUniqueConstraint columnNames="account_id, hostel_id" constraintName="account_hostel_manager" tableName="managers"/>
     </changeSet>
     <changeSet author="lekha (generated)" id="1653760916797-12">
-        <addUniqueConstraint columnNames="city, distrinct, ward, street" constraintName="address" tableName="hostels"/>
+        <addUniqueConstraint columnNames="city, district, ward, street" constraintName="address" tableName="hostels"/>
     </changeSet>
     <changeSet author="lekha (generated)" id="1653760916797-13">
         <addUniqueConstraint columnNames="permission_id, manager_id" constraintName="permission_id" tableName="permission_of_manager"/>
@@ -339,4 +339,6 @@
     
     <include file="changelog/alter-fullname.mysql.sql"/>
     <include file="changelog/create-trigger-event.mysql.sql"/>
+    
+    <include file="changelog/alter-hostels.mysql.sql"/>
 </databaseChangeLog>

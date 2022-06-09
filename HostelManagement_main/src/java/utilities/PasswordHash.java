@@ -6,6 +6,7 @@
 package utilities;
 
 
+import java.io.Serializable;
 import java.security.SecureRandom;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.SecretKeyFactory;
@@ -16,7 +17,7 @@ import java.security.spec.InvalidKeySpecException;
  *
  * @author lekha
  */
-public class PasswordHash {
+public class PasswordHash implements Serializable {
     public static final String PBKDF2_ALGORITHM = "PBKDF2WithHmacSHA1";
 
     // The following constants may be changed without breaking existing hashes.

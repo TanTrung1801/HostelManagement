@@ -6,18 +6,21 @@
 package daos;
 
 import dtos.Account;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
 import utilities.DatabaseConnection;
 
 /**
  *
  * @author lekha
  */
-public class AccountDAO {
+public class AccountDAO implements Serializable {
 
     /**
      *
@@ -80,7 +83,6 @@ public class AccountDAO {
     public static boolean addAccount(String username, String hashedPassword, int role, String firstname, String lastname, String email, String phone, String idCardNumber, int status, Date dateOfBirth) {
         Connection cn = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
             cn = DatabaseConnection.makeConnection();
             if (cn != null) {
                 String sql = "INSERT INTO Accounts( username, hashed_password, role, first_name, last_name, email, phone, id_card_number, account_status, date_of_birth)\n"
@@ -103,6 +105,47 @@ public class AccountDAO {
                     return true;
                 } else {
                     return false;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+    
+        public static boolean updateAccount(int accountId, HashMap<String, String> columnValuePair) {
+        Connection cn = null;
+        try {
+            cn = DatabaseConnection.makeConnection();
+            if (cn != null) {
+                if (columnValuePair.size()>0){
+                    String set = "";
+                    ArrayList<String> setValue = new ArrayList();
+
+                    for (String column : columnValuePair.keySet()) {
+                        set = set + "  " + column + "=?";
+                        setValue.add(columnValuePair.get(column));
+                    }
+                    set = set.trim().replace("  ", ", ");
+                    
+                    String sql = "UPDATE Accounts\n"
+                            + "SET "+set+"\n"
+                            + "WHERE account_id=?";
+                    PreparedStatement pst = cn.prepareStatement(sql);
+                    
+                    for(int i=0; i<setValue.size(); i++){
+                        pst.setString(i+1, setValue.get(i));
+                    }
+                    pst.setString(setValue.size()+1, accountId+"");
+                    
+                    int affectedCol = pst.executeUpdate();
+                    if (affectedCol == 1) {
+                        System.out.println("Update successfully");
+                        return true;
+                    } else {
+                        return false;
+                    }
                 }
             }
         } catch (Exception e) {

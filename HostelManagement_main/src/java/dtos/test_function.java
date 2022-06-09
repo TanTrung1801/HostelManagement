@@ -13,6 +13,7 @@ import java.security.spec.InvalidKeySpecException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -87,31 +88,53 @@ public class test_function {
         
         System.out.println(test.size());
         
-        String[] test2 = {"Volvo", "BMW", "Ford", "Mazda"};
+//        String[] test2 = {"Volvo", "BMW", "Ford", "Mazda"};
+//        
+//        String columns = "";
+//                for(int i =0; i<test2.length; i++){
+//                    if (i==0) columns = test2[i];
+//                    else columns = columns + "," + test2[i];
+//                }
+//        
+//        System.out.println(columns);
+//        
+//        System.out.println("Kaaa".matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$"));
+//        System.out.println("lekhang8@gmail.com".matches("^[a-z0-9._%+-]+@(gmail.com|fpt.edu.vn|yahoo.com)$"));
+//        
+//        Date d = Date.valueOf("2002-03-31");
+//        System.out.println("7abea1a82e58881284c13e25a223e5578b305bfa5c255c7b".length());
+//        System.out.println(AccountDAO.addAccount("Lumethys", "1000:7abea1a82e58881284c13e25a223e5578b305bfa5c255c7b:1d96ac55461a66615744ac30f2dac277f6db01e2035d880e", 0, "Nguyên Khang", "Lê", "lekhang8@gmail.com", "0974555081", "352693636", 1, d));
+//        
         
-        String columns = "";
-                for(int i =0; i<test2.length; i++){
-                    if (i==0) columns = test2[i];
-                    else columns = columns + "," + test2[i];
-                }
+//        try (Connection cn = DatabaseConnection.makeConnection()) {
+//            System.out.println("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+//            System.out.println(cn.getCatalog());
+//        } catch (SQLException ex) {
+//            //Logger.getLogger(DBUtils.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
-        System.out.println(columns);
+        HashMap<String, String> a = new HashMap();
+        a.put("account_id", "1");
+        a.put("username", "Khang");
+        a.put("email", "l@gmail.com");
+        a.put("asdasd", "hihih");
+        a.put("qwert", "hahaha");
+        a.put("fdgf", "hohoho");
         
-        System.out.println("Kaaa".matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$"));
-        System.out.println("lekhang8@gmail.com".matches("^[a-z0-9._%+-]+@(gmail.com|fpt.edu.vn|yahoo.com)$"));
-        
-        Date d = Date.valueOf("2002-03-31");
-        System.out.println("7abea1a82e58881284c13e25a223e5578b305bfa5c255c7b".length());
-        System.out.println(AccountDAO.addAccount("Lumethys", "1000:7abea1a82e58881284c13e25a223e5578b305bfa5c255c7b:1d96ac55461a66615744ac30f2dac277f6db01e2035d880e", 0, "Nguyên Khang", "Lê", "lekhang8@gmail.com", "0974555081", "352693636", 1, d));
-        
-        
-        try (Connection cn = DatabaseConnection.makeConnection()) {
-            System.out.println("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-            System.out.println(cn.getCatalog());
-        } catch (SQLException ex) {
-            //Logger.getLogger(DBUtils.class.getName()).log(Level.SEVERE, null, ex);
+        String b = "";
+        ArrayList<String> c = new ArrayList();
+        for(String aa : a.keySet()){
+            b = b + "  " +aa+"=?";
+            c.add(a.get(aa));
         }
         
+        b = b.trim().replace("  ", ", ");
         
+        System.out.println(b);
+        
+        for(int i=0; i<c.size(); i++){
+            System.out.println(i+1 + "=" + c.get(i));
+        }
+        System.out.println(c.size()+1 +"=123");
     }
 }

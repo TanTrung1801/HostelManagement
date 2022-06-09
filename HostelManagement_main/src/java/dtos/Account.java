@@ -5,6 +5,7 @@
  */
 package dtos;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -12,7 +13,7 @@ import java.sql.Timestamp;
  *
  * @author lekha
  */
-public class Account {
+public class Account implements Serializable {
     private int accountId;
     private String username;
     private String hashedPassword;
