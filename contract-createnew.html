@@ -142,7 +142,7 @@
                 </li>
 
                 
-                <li class="active">
+                <li >
                     <a href="#myHostel" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle">My Hostel</a>
                     <ul class="collapse list-unstyled" id="myHostel">
@@ -158,11 +158,11 @@
                     </ul>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle">Transaction</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
+                        <li >
                             <a href="#">Create New</a>
                         </li>
                         <li>
@@ -198,7 +198,9 @@
             <div class="row">
                 <ol class="col-12 breadcrumb">
                     <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                    <li class="breadcrumb-item active">My Hostel</li>
+                    <li class="breadcrumb-item ">My Hostel</li>
+                    <li class="breadcrumb-item ">Transaction</li>
+                    <li class="breadcrumb-item active">Create New</li>
                 </ol>
                 <div class="col-12">
                     <h3>My Hostel</h3>
@@ -207,102 +209,173 @@
             </div>
 
 
-            <div class="container-fluid mb-5">
-                <div class=" d-flex mt-5  ">
-                    <div class="col-md-9 col-lg-5 col-xl-4 offset-sm-1 mt-5">
-                        <div class="card" height="auto" width="auto">
-                            <div class=" justify-content-between align-items-center">
-                                <img src="img/Avatar_icon_green_1.svg.png" alt="user-avatar"
-                                    class="d-block bg-white rounded-circle border shadow my-4 mx-auto" height="300"
-                                    width="300" id="uploadedAvatar">
-                                <div class="button-wrapper mx-4">
-
-                                    <label for="upload" class="btn btn-green mx-5 me-2 mb-4" tabindex="0">
-                                        <span class="d-none d-sm-block">Upload New photo</span>
-                                        <i class="bx bx-upload d-block d-sm-none"></i>
-                                        <input type="file" id="upload" class="account-file-input" hidden=""
-                                            accept="image/png, image/jpeg">
-                                    </label>
-                                    
-
-                                </div>
-                            </div>
+            <div class="container-fluid card mb-5">
+                <div class="px-3 py-3    ">
+                   
+                    <div class="col-md-12 col-lg-8 col-xl-6 offset-sm-1 ">
+                       
                         </div>
-
-                    </div>
-                    <div class="col-md-8 col-lg-6 col-xl-5 offset-sm-1 ">
                         <form method="POST" action="/HostelManagement_main/login/submit" class="register-form"
                             id="login-form">
-
-
                             <div class="form-row">
-                                <div class="form-group col-6 col-sm-6">
-                                    <label class="form-label" for="firstname">First Name</label>
-                                    <input type="text" name="firstName" id="firstname" placeholder="First Name"
-                                        value="Kim" class="form-control" required="">
+                                <div class="form-group col-2 col-sm-2 font-weight-bold">
+                                    <label class="form-label" for="contract_id">Contract ID</label>
+                                    <input type="text" name="contract_id" id="contract_id" placeholder="123"
+                                        value="" class="form-control" required="">
                                 </div>
 
-                                <div class="form-group col-6 col-sm-6">
-                                    <label class="form-label" for="lastname">Last Name</label>
-                                    <input type="text" name="lastName" id="lastname" placeholder="Last Name"
-                                        value="Chan" class="form-control" required="">
+                                <div class="form-group col-2 col-sm-2 font-weight-bold offset-sm-4">
+                                    <label class="form-label" for="room_id">Room ID</label>
+                                    <input type="text" name="room_id" id="room_id" placeholder="123"
+                                        value="" class="form-control" required="">
                                 </div>
+                                
                             </div>
+                            <div class="form-row">
+                                <div class="form-group col-2 col-sm-2 font-weight-bold">
+                                    <label class="form-label" for="client_id">Client ID</label>
+                                    <input type="text" name="client_id" id="client_id" placeholder="123"
+                                        value="" class="form-control" required="">
+                                </div>
 
-                            <div class="form-group">
-                                <label class="form-label" for="username">
-                                    Username
-                                </label>
-                                <input type="text" name="username" id="username" placeholder="Username"
-                                    value="KimChan123" class="form-control" disabled>
-
+                                
+                                
                             </div>
-
-
-                            <div class="form-group">
-                                <label class="form-label" for="email">Email Address</label>
-                                <input type="email" name="email" id="email" placeholder="Your Email"
-                                    pattern="[a-z0-9._%+-]+@(gmail.com|fpt.edu.vn|yahoo.com)" required=""
-                                    title="Email addresses must not contain any upper letter and end with domains '@gmail.com' or '@fpt.edu.vn' or '@yahoo.com'"
-                                    value="kimchan123@gmail.com" class="form-control">
-
+                            <div class="px-3 py-2  font-weight-bold bg-dark text-white">
+                                Detail Payment
                             </div>
+                            <!-- <div class="form-row ">
+                                <div class="form-group col-6 col-sm-6">
+                                    <label for="city">City
+                                        <select class="form-control "  name="calc_shipping_provinces" required="">
+                                            <option value="">abc</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                
+                                
+                                 <div class="form-group  col-6 col-sm-6">
+                                    <label for="ward">Ward
+                                        <select class="form-control mx-0 " name="calc_shipping_district" required="">
+                                            <option value="">Ward</option>
+                                          </select>
+                                          <input class="billing_address_1" name="" type="hidden" value="">
+                                          <input class="billing_address_2" name="" type="hidden" value="">
+                                      </label>
+                                 </div>
+                                 
+                                  
+                            </div> -->
 
-                            <div class="form-group">
-                                <label class="form-label" for="idcardnumber">
-                                    ID Card Number
-                                </label>
-                                <input type="text" name="idCardNumber" id="idcardnumber" placeholder="ID Card Number"
-                                    value="1234567890124567" maxlength="16" class="form-control">
+                            <table class="table ">
+                                <thead class="">
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Start Date</th>
+                                    <th scope="col">End Date</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Status</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>
+                                        <div class="px-0" style="width:10vw ;">
+                                            <input class="form-control mx-0"style="width:10vw ;"  type="date" value="">
+                                        </div>
+                                            
+                                       
+                                    <td> <div class="px-0" style="width:10vw ;">
+                                        <input class="form-control mx-0"  type="date" value="">
+                                    </div></td>
+                                    <td>
+                                        <div class="text-center"  style="width:10vw ;">
+                                        
+                                        <input type="text" name="room_price" style="width:10vw ;" id="room_price" placeholder="123"
+                                            value="" class="form-control" required="">
+                                    </div></td>
+                                  </tr>
+                                  
+                                  
+                                </tbody>
+                              </table>
+                              
+                             
+                              </table>
+                              <div class="form-row">
+                                <div class="form-group form-row col-6 col-sm-6">
+                                    <div class="col-6 col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                              Security
+                                            </label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                              Elevator
+                                            </label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                             Garden
+                                            </label>
+                                          </div>
+                                          
+                                    </div>
+                                    <div class="col-6 col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                              Others
+                                            </label>
+                                          </div>
+                                          <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                Others
+                                            </label>
+                                          </div><div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                Others
+                                            </label>
+                                          </div>
+                                    </div>
+                                </div>
+                               
+                                      
+                                  
+                                  <div class="form-group col-6 col-sm-6">
+                                    <div class="">
+                                        Total
+                                    </div>
+                                    <div class="text-white bg-dark rounded py-1 list-unstyled">
+                            <ul>
+    <ol></ol>
+    <ol> </ol>
+    <ol></ol>
+</ul>
 
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="dateOfBirth">Date of Birth</label>
-                                <input type="date" name="dateOfBirth" id="dateOfBirth" placeholder="Date of birth"
-                                    class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="contact">
-                                    Phone Number
-                                </label>
-                                <input type="tel" name="phone" id="contact" placeholder="Contact no" value="0234514588"
-                                    maxlength="10" pattern="[0-9]{10,10}" class="form-control">
 
-                            </div>
-
-
-
-
+                                    </div>
+                              </div>
+                              
+                              
                             <div class="text-center text-lg-start my-4 py-2">
+                               
 
-
-                                <input type="submit" name="action" id="signup" value="Update Profile"
+                                <input type="submit" name="action" id="signup" value="Create"
                                     class="form-submit btn btn-success"
                                     style="padding-left: 2.5rem; padding-right: 2.5rem;background-color:#628272">
-                                <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
                             </div>
 
-
+                            
+                            </div>
 
 
 
@@ -315,78 +388,7 @@
             </div>
 
 
-            <div class="card mx-5 my-5">
-                <h5 class="card-header btn-green">Change Password</h5>
-                <div class="card-body">
-                    <div class="my-4 col-7 ml-5">
-                        <div>
-                            <form method="POST" action="/HostelManagement_main/login/submit" class="register-form"
-                                id="register-form">
-                                <div class="form-group">
-                                    <label class="form-label" for="pass">Old Password</label>
-                                    <input type="password" name="password" id="pass" placeholder="Old Password"
-                                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" class="form-control"
-                                        required />
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="form-label" for="pass">New Password</label>
-                                    <input type="password" name="password" id="pass" placeholder="New Password"
-                                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" class="form-control"
-                                        required />
-
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="confirm">Confirm Password</label>
-                                    <input type="password" name="confirm" id="confirm"
-                                        placeholder="Repeat your password"
-                                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" class="form-control"
-                                        required />
-
-                                </div>
-                                <a href="./owner page.html"  style="color: green; font-style:italic; padding-left:70% ">I forgot my
-                                    password</a>
-
-
-                                <div class="text-center text-lg-start mt-4 pt-2">
-
-
-                                    <input type="submit" name="action" id="signup" value="Update"
-                                        class="form-submit btn btn-success"
-                                        style="padding-left: 2.5rem; padding-right: 2.5rem;background-color:#628272"></input>
-
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-
-
-
-            <div class="card mx-5 my-5 ">
-                <h5 class="card-header btn-green">Delete Account</h5>
-                <div class="card-body">
-                    <div class="mb-3 col-12 mb-0">
-                        <div class="alert alert-warning">
-                            <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete your account?</h6>
-                            <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
-                        </div>
-                    </div>
-                    <form id="formAccountDeactivation" onsubmit="return false">
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" name="accountActivation"
-                                id="accountActivation">
-                            <label class="form-check-label" for="accountActivation">I confirm my account
-                                deactivation</label>
-                        </div>
-                        <button type="submit" class="btn btn-danger deactivate-account">Deactivate Account</button>
-                    </form>
-                </div>
-            </div>
+           
         </div>
     </div>
 
@@ -426,7 +428,7 @@
     </footer>
 
 
-
+    <script src='https://cdn.jsdelivr.net/gh/vietblogdao/js/districts.min.js'></script>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -438,7 +440,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-
+<script src="/js/main.js"></script>
 
 </body>
 
