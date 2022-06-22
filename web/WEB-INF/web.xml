@@ -64,6 +64,14 @@
         <servlet-name>owningController</servlet-name>
         <servlet-class>controllers.owningController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>rentingController</servlet-name>
+        <servlet-class>controllers.rentingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createFeedbackServlet</servlet-name>
+        <servlet-class>servlets.createFeedbackServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/homeController</url-pattern>
@@ -119,6 +127,14 @@
     <servlet-mapping>
         <servlet-name>owningController</servlet-name>
         <url-pattern>/owningController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>rentingController</servlet-name>
+        <url-pattern>/rentingController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createFeedbackServlet</servlet-name>
+        <url-pattern>/createFeedbackServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -17,5 +17,5 @@ public interface DAOInterface<T> {
     
     public abstract T getOne(String column, String value);
     
-    public abstract List<T> getList();
+    public abstract List<T> getList(String column, String value);
 }

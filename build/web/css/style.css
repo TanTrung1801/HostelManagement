@@ -514,7 +514,9 @@ a:focus {
 
 
 
-
+/* ---------------------------------------------------
+HOME PAGE
+----------------------------------------------------- */
 
 
 .carousel-caption {
@@ -535,4 +537,54 @@ a:focus {
 
 .carousel-inner h4 {
     color: #E8AE58;
+}
+
+/* ---------------------------------------------------
+Pagination style
+----------------------------------------------------- */
+
+
+
+
+
+.page-item.first .page-link, .page-item.last .page-link, .page-item.next .page-link, .page-item.prev .page-link, .page-item.previous .page-link {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+
+.page-item .page-link {
+    border-radius: 0.25rem;
+    margin-left: 0.25rem;
+}
+
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #4fa97c;
+    border-color: #4fa97c;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #4fa97c;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
 }

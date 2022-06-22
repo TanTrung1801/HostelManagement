@@ -202,8 +202,12 @@ public class AccountDAO implements DAOInterface<Account>, Serializable {
         return acc;
     }
     
-    @Override
     public List<Account> getList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Account> getList(String column, String value) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

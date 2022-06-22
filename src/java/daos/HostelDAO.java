@@ -83,7 +83,6 @@ public class HostelDAO implements DAOInterface<Hostel>, Serializable {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public List<Hostel> getList() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -126,4 +125,7 @@ public class HostelDAO implements DAOInterface<Hostel>, Serializable {
         }
         return host;
     }
+    
+    
+    
 }

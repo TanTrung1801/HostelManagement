@@ -126,8 +126,12 @@ public class UpdateTokenDAO implements DAOInterface<UpdateToken>, Serializable {
         return updateToken;
     }
 
-    @Override
     public List<UpdateToken> getList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<UpdateToken> getList(String column, String value) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

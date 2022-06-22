@@ -39,19 +39,19 @@ public class changePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             HttpSession session = request.getSession();
             String contextPath = request.getContextPath();
-            
+
             String currentPass = request.getParameter("currentPass");
             String newPass = request.getParameter("newPass");
             String confirmPass = request.getParameter("confirmPass");
 
             try {
                 if (currentPass != null && newPass != null && confirmPass != null) {
-                    int accountId =(Integer) session.getAttribute("loginId");
+                    int accountId = (Integer) session.getAttribute("loginId");
                     AccountDAO dao = new AccountDAO();
-                    Account acc = dao.getOne("account_id", accountId+"");
+                    Account acc = dao.getOne("account_id", accountId + "");
                     if (acc != null) {
                         if (validatePassword(currentPass, acc.getHashedPassword())) {
                             if (newPass.length() >= 8 && newPass.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$")) {
@@ -70,27 +70,27 @@ public class changePasswordServlet extends HttpServlet {
                                         request.setAttribute("ERROR", "Change password failed, password remain unchanged");
                                     }
                                 } else {
-                                    request.setAttribute("ERROR", "your new password and password confirm do not match!!");                         
+                                    request.setAttribute("ERROR", "your new password and password confirm do not match!!");
                                 }
                             } else {
-                                request.setAttribute("ERROR", "password must be longer than 8 characters and contain at least 1 uppercase, 1 lower case and 1 number!!");                               
+                                request.setAttribute("ERROR", "password must be longer than 8 characters and contain at least 1 uppercase, 1 lower case and 1 number!!");
                             }
                         } else {
                             request.setAttribute("ERROR", "Wrong Password!");
                         }
                     } else {
                         request.setAttribute("ERROR", "Login session error");
-                    }                   
+                    }
                 } else {
                     request.setAttribute("ERROR", "Please enter all the required fields!");
                 }
                 if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
                     request.getRequestDispatcher("/WEB-INF/jspf/profileContent/changePasswordForm.jsp").forward(request, response);
-                }else{
+                } else {
                     request.setAttribute("profileContent", "changePasswordForm");
                     request.getRequestDispatcher("/index.jsp").forward(request, response);
                 }
-            } catch (NoSuchAlgorithmException | InvalidKeySpecException  e) {
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
                 e.printStackTrace();
             }
         }
