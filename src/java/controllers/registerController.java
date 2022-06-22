@@ -32,8 +32,30 @@ public class registerController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+       try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
+            String processingPath = (String) request.getAttribute("processingPath");
 
+            String[] splitter = processingPath.split("/");
+            
+            if(session.getAttribute("loginedAccount")!=null){
+                response.sendRedirect("/HostelManagement_main/home");
+                return;
+            }
+            
+            if (splitter.length < 2) {
+                request.setAttribute("pageTitle", "Register");
+                request.setAttribute("pageContent", "registerForm.jsp");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            } else {
+                if (splitter[1].equals("submit")) {
+                    System.out.println("HELLLLLLLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+                    request.getRequestDispatcher("registerServlet").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("error.jsp").forward(request, response);
+                }
+            }
         }
     }
 

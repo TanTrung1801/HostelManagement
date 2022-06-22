@@ -33,8 +33,37 @@ public class profileController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
+            String processingPath = (String) request.getAttribute("processingPath");
             
-       
+            String[] splitter = processingPath.split("/");
+            
+            if(splitter.length>2){
+                response.setStatus(404);
+            }
+            else{
+                System.out.println(request.getParameter("tool"));
+                System.out.println(request.getParameter("action"));
+                
+                request.setAttribute("homeContent", "profile");
+                String indexNames[] = {"account_id"};
+                request.setAttribute("indexNames", indexNames);
+                
+                if (request.getParameter("action")!=null){
+                    String action = request.getParameter("action");
+                    switch (action){
+                        case "changePassword":               
+                            request.getRequestDispatcher("changePasswordServlet").forward(request, response);
+                            return;
+                        case "updateProfile":
+                            request.getRequestDispatcher("updateProfileServlet").forward(request, response);
+                            return;
+                    }
+                } 
+                
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            }
         }
     }
 

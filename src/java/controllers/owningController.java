@@ -33,7 +33,35 @@ public class owningController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
+            String processingPath = (String) request.getAttribute("processingPath");
+            
+            String[] splitter = processingPath.split("/");
+            
+            if(splitter.length>2){
+//                if (splitter[2].equals("tool")){
+//                    request.getRequestDispatcher("owningToolController").forward(request, response);
+//                }
+//                else{
+                    request.getRequestDispatcher("hostelController").forward(request, response);
+//                }
+            }
+            else{
+                request.setAttribute("homeContent", "owning");
+                if (request.getParameter("action")!=null){
+                    String action = request.getParameter("action");
+                    switch (action){
+                        case "createHostel":                            
+                            request.getRequestDispatcher("createHostelServlet").forward(request, response);
+                            return;
+                        case "s":
+                            request.getRequestDispatcher("s").forward(request, response);
+                            return;
+                    }
+                } 
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+            }
         }
     }
 
@@ -62,9 +90,7 @@ public class owningController extends HttpServlet {
             request.setAttribute("homeContent", "owning");
             switch (splitter[3]) {
                 case "hostels":
-
                     return;
-
                 case "view":
                     request.setAttribute("owningContent", "view");
                     request.getRequestDispatcher("index.jsp").forward(request, response);

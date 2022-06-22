@@ -23,6 +23,14 @@ public class Hostel implements Serializable {
         this.name = "";
         this.hostelSlug = "";
     }
+    public Hostel( int ownerId, String city, String district, String ward, String street, String name) {
+        this.ownerId = ownerId;
+        this.city = city;
+        this.district = district;
+        this.ward = ward;
+        this.street = street;
+        this.name = name;
+    }
 
     public Hostel(int hostelId, int ownerId, String city, String district, String ward, String street, String name, String hostelSlug) {
         this.hostelId = hostelId;

@@ -33,6 +33,26 @@ public class loginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
+            String processingPath = (String) request.getAttribute("processingPath");
+
+            String[] splitter = processingPath.split("/");
+            
+            if(session.getAttribute("loginId")!=null){
+                response.sendRedirect("/HostelManagement_main/home");
+                return;
+            }
+            
+            if (splitter.length < 2) {
+                request.setAttribute("pageTitle", "Login");
+                request.setAttribute("pageContent", "loginForm.jsp");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            } else {
+                if(splitter[1].equals("submit"))
+                    request.getRequestDispatcher("loginServlet").forward(request, response);
+                else request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
 
         }
     }
