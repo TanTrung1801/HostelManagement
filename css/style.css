@@ -589,5 +589,49 @@ Pagination style
     border: 1px solid #dee2e6;
 }
 
+/* ---------------------------------------------------
+css table in transaction
+----------------------------------------------------- */
 
 
+
+
+.demotbl {
+    border-collapse: collapse !important;
+    border: 1px solid #69899F;
+    width: 100%;
+    
+  }
+.demotbl th{
+    border: 2px solid #69899F;
+    color: #3E5260;
+    padding:10px;
+    width:max-content;
+    text-align: center;
+    background-color: #4fa97c;
+  }
+.demotbl td{
+    border: 1px groove black;
+    color: #002F5E;
+    padding:15px;
+    width:100px;
+    text-align: center;
+  }
+.bg-label-primary {
+    background-color: rgb(231, 231, 255) !important;
+    color: rgb(105, 108, 255) !important;
+}
+.bg-label-secondary {
+    background-color: rgb(231, 231, 255) !important;
+    color: rgb(122, 122, 122) !important;
+}
+
+.me-1 {
+    margin-right: 0.25rem !important;
+}
+
+
+.badge {
+    text-transform: uppercase;
+    line-height: 0.75;
+}
