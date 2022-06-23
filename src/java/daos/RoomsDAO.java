@@ -21,86 +21,86 @@ import utilities.DatabaseConnection;
  * @author Truong Thanh Trung
  */
 public class RoomsDAO implements DAOInterface<Rooms> {
-
-    public static List<Rooms> getAllListRoom(String indexValue) throws SQLException, Exception {
-        Connection cn = null;
-        List<Rooms> room = new ArrayList<>();
-        try {
-            cn = DatabaseConnection.makeConnection();
-
-            String sql = "SELECT *\n"
-                    + "FROM rooms\n"
-                    + "WHERE hostel_id =" + indexValue + ";";
-            PreparedStatement pst = cn.prepareStatement(sql);
-            ResultSet rs = pst.executeQuery();
-
-            while (rs != null && rs.next()) {
-                int room_id = rs.getInt("room_id");
-                int hostel_id = rs.getInt("hostel_id");
-                String name = rs.getString("name");
-                String room_slug = rs.getString("room_slug");
-                int max_contract = rs.getInt("max_contract");
-                room.add(new Rooms(room_id, hostel_id, name, room_slug, max_contract));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (cn != null) {
-                try {
-                    cn.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return room;
-    }
-
-    public static Rooms getRooms(String index, String indexValue) {
-        Connection cn = null;
-        Rooms room = null;
-        try {
-            cn = DatabaseConnection.makeConnection();
-            if (cn != null) {
-//                String columns = "";
-//                for (int i = 0; i < indexNames.length; i++) {
-//                    if (i == 0) {
-//                        columns = indexNames[i];
-//                    } else {
-//                        columns = columns + "," + indexNames[i];
-//                    }
+//
+//    public static List<Rooms> getAllListRoom(String indexValue) throws SQLException, Exception {
+//        Connection cn = null;
+//        List<Rooms> room = new ArrayList<>();
+//        try {
+//            cn = DatabaseConnection.makeConnection();
+//
+//            String sql = "SELECT *\n"
+//                    + "FROM rooms\n"
+//                    + "WHERE hostel_id =" + indexValue + ";";
+//            PreparedStatement pst = cn.prepareStatement(sql);
+//            ResultSet rs = pst.executeQuery();
+//
+//            while (rs != null && rs.next()) {
+//                int room_id = rs.getInt("room_id");
+//                int hostel_id = rs.getInt("hostel_id");
+//                String name = rs.getString("name");
+//                String room_slug = rs.getString("room_slug");
+//                int max_contract = rs.getInt("max_contract");
+//                room.add(new Rooms(room_id, hostel_id, name, room_slug, max_contract));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (cn != null) {
+//                try {
+//                    cn.close();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
 //                }
-                String sql = "SELECT* \n"
-                        + "FROM rooms\n"
-                        + "WHERE " + index + "= ?";
-                PreparedStatement pst = cn.prepareStatement(sql);
-                pst.setString(1, indexValue);
-                //pst.setString(2, password);
-                ResultSet rs = pst.executeQuery();
-
-                if (rs != null && rs.next()) {
-
-                    int room_id = rs.getInt("room_id");
-                    int hostel_id = rs.getInt("hostel_id");
-                    String name = rs.getString("name");
-                    String room_slug = rs.getString("room_slug");
-                    int max_contract = rs.getInt("max_contract");
-                    room = new Rooms(room_id, hostel_id, name, room_slug, max_contract);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (cn != null) {
-                try {
-                    cn.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return room;
-    }
+//            }
+//        }
+//        return room;
+//    }
+//
+//    public static Rooms getRooms(String index, String indexValue) {
+//        Connection cn = null;
+//        Rooms room = null;
+//        try {
+//            cn = DatabaseConnection.makeConnection();
+//            if (cn != null) {
+////                String columns = "";
+////                for (int i = 0; i < indexNames.length; i++) {
+////                    if (i == 0) {
+////                        columns = indexNames[i];
+////                    } else {
+////                        columns = columns + "," + indexNames[i];
+////                    }
+////                }
+//                String sql = "SELECT* \n"
+//                        + "FROM rooms\n"
+//                        + "WHERE " + index + "= ?";
+//                PreparedStatement pst = cn.prepareStatement(sql);
+//                pst.setString(1, indexValue);
+//                //pst.setString(2, password);
+//                ResultSet rs = pst.executeQuery();
+//
+//                if (rs != null && rs.next()) {
+//
+//                    int room_id = rs.getInt("room_id");
+//                    int hostel_id = rs.getInt("hostel_id");
+//                    String name = rs.getString("name");
+//                    String room_slug = rs.getString("room_slug");
+//                    int max_contract = rs.getInt("max_contract");
+//                    room = new Rooms(room_id, hostel_id, name, room_slug, max_contract);
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (cn != null) {
+//                try {
+//                    cn.close();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+//        return room;
+//    }
 
 //    public boolean addRooms(String hostel_id , String owner_id, String city, String distrinct, String ward, String street, String name, String hostel_slug) {
 //        
@@ -133,15 +133,15 @@ public class RoomsDAO implements DAOInterface<Rooms> {
 //            return false;
 //        }
 //        return false;
+////    }
+//    public static void main(String[] args) throws Exception {
+//
+//        List<Rooms> listRooms = getAllListRoom("1");
+//        Rooms ro = new Rooms();
+//        ro = getRooms("hostel_id", "1");
+//        System.out.println(listRooms);
+//        System.out.println(ro);
 //    }
-    public static void main(String[] args) throws Exception {
-
-        List<Rooms> listRooms = getAllListRoom("1");
-        Rooms ro = new Rooms();
-        ro = getRooms("hostel_id", "1");
-        System.out.println(listRooms);
-        System.out.println(ro);
-    }
 
     @Override
     public boolean add(Rooms room) {
@@ -219,7 +219,7 @@ public class RoomsDAO implements DAOInterface<Rooms> {
             cn = DatabaseConnection.makeConnection();
             if (cn != null) {
                 String sql = "SELECT room_id, hostel_id, name, room_slug, max_contract\n"
-                        + "FROM Rooms\n"
+                        + "FROM rooms\n"
                         + "WHERE " + (column) + " = ?";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, value);
@@ -257,8 +257,8 @@ public class RoomsDAO implements DAOInterface<Rooms> {
 
             cn = DatabaseConnection.makeConnection();
             if (cn != null) {
-                String sql = "SELECT room_id, hostel_id, name, room_slug, max_contract\n"
-                        + "FROM Rooms\n"
+                String sql = "SELECT* \n"
+                        + "FROM rooms\n"
                         + "WHERE " + (column) + " = ?";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, value);
@@ -270,7 +270,6 @@ public class RoomsDAO implements DAOInterface<Rooms> {
                     String name = rs.getString("name");
                     String room_slug = rs.getString("room_slug");
                     int max_contract = rs.getInt("max_contract");
-
                     room.add(new Rooms(room_id, hostel_id, name, room_slug, max_contract));
                 }
             }

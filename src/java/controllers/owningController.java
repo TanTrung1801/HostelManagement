@@ -90,12 +90,13 @@ public class owningController extends HttpServlet {
             request.setAttribute("homeContent", "owning");
             switch (splitter[3]) {
                 case "hostels":
+                    request.setAttribute("owningContent", "hostel");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                     return;
                 case "view":
                     request.setAttribute("owningContent", "view");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     return;
-
                 case "create-hostel":
                     request.setAttribute("owningContent", "createHostel");
                     request.getRequestDispatcher("index.jsp").forward(request, response);

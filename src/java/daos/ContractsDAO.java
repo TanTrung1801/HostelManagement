@@ -158,7 +158,7 @@ public class ContractsDAO implements DAOInterface<Contracts> {
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, value);
                 ResultSet rs = pst.executeQuery();
-                if (rs != null && rs.next()) {
+                while (rs != null && rs.next()) {
                     int contract_id = rs.getInt("contract_id");
                     int room_id = rs.getInt("room_id");
                     int client_id = rs.getInt("client_id");

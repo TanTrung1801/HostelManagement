@@ -80,7 +80,42 @@ public class HostelDAO implements DAOInterface<Hostel>, Serializable {
 
     @Override
     public Hostel getOne(String column, String value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Connection cn = null;
+       Hostel host = new Hostel();
+        try {
+            cn = DatabaseConnection.makeConnection();
+
+            String sql = "SELECT *\n"
+                    + "FROM hostels\n"
+                    + "WHERE " + column + " = ?";
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, value);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs != null && rs.next()) {
+                int hostel_id = rs.getInt("hostel_id");
+                int owner_id = rs.getInt("owner_id");
+                String city = rs.getString("city");
+                String district = rs.getString("distrinct");
+                String ward = rs.getString("ward");
+                String street = rs.getString("street");
+                String name = rs.getString("name");
+                String hostel_slug = rs.getString("hostel_slug");
+                
+                host = new Hostel(hostel_id, owner_id, city, district, ward, street, name, hostel_slug);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return host;
     }
 
 @Override
@@ -101,7 +136,7 @@ public class HostelDAO implements DAOInterface<Hostel>, Serializable {
                 int hostel_id = rs.getInt("hostel_id");
                 int owner_id = rs.getInt("owner_id");
                 String city = rs.getString("city");
-                String district = rs.getString("district");
+                String district = rs.getString("distrinct");
                 String ward = rs.getString("ward");
                 String street = rs.getString("street");
                 String name = rs.getString("name");
