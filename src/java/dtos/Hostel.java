@@ -23,7 +23,7 @@ public class Hostel implements Serializable {
         this.name = "";
         this.hostelSlug = "";
     }
-    public Hostel( int ownerId, String city, String district, String ward, String street, String name) {
+    public Hostel(int ownerId, String city, String district, String ward, String street, String name) {
         this.ownerId = ownerId;
         this.city = city;
         this.district = district;
@@ -107,4 +107,9 @@ public class Hostel implements Serializable {
         this.hostelSlug = hostelSlug;
     }
 
+    @Override
+    public String toString() {
+        return "Hostel{" + "hostelId=" + hostelId + ", ownerId=" + ownerId + ", city=" + city + ", district=" + district + ", ward=" + ward + ", street=" + street + ", name=" + name + ", hostelSlug=" + hostelSlug + '}';
+    }
+        
 }

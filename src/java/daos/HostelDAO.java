@@ -28,7 +28,7 @@ public class HostelDAO implements DAOInterface<Hostel>, Serializable {
         try {
             cn = DatabaseConnection.makeConnection();
             if (cn != null) {
-                String sql = "INSERT INTO hostels( owner_id, city, district, ward, street, name, hostel_slug)\n"
+                String sql = "INSERT INTO hostels( owner_id, city, distrinct, ward, street, name, hostel_slug)\n"
                         + "VALUES ( ?, ?, ?, ?, ?, ?, ?);";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setInt(1, hostel.getOwnerId());

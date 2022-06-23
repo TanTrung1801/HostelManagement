@@ -110,7 +110,8 @@ public class mainController implements Filter {
         
         Throwable problem = null;
         try {
-            request.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html;charset=UTF-8");
+            request.setCharacterEncoding("utf-8");
             
             HttpServletRequest req = (HttpServletRequest) request;
             HttpServletResponse res = (HttpServletResponse) response;
