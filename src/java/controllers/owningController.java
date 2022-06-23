@@ -32,34 +32,34 @@ public class owningController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
             String processingPath = (String) request.getAttribute("processingPath");
-            
+
             String[] splitter = processingPath.split("/");
-            
-            if(splitter.length>2){
+
+            if (splitter.length > 2) {
 //                if (splitter[2].equals("tool")){
 //                    request.getRequestDispatcher("owningToolController").forward(request, response);
 //                }
 //                else{
-                    request.getRequestDispatcher("hostelController").forward(request, response);
+                request.getRequestDispatcher("hostelController").forward(request, response);
 //                }
-            }
-            else{
+            } else {
                 request.setAttribute("homeContent", "owning");
-                if (request.getParameter("action")!=null){
+                if (request.getParameter("action") != null) {
                     String action = request.getParameter("action");
-                    switch (action){
-                        case "createHostel":                            
+                    switch (action) {
+                        case "create-Hostel":
                             request.getRequestDispatcher("createHostelServlet").forward(request, response);
                             return;
                         case "s":
                             request.getRequestDispatcher("s").forward(request, response);
                             return;
                     }
-                } 
+                }
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
         }
@@ -77,6 +77,8 @@ public class owningController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession();
         String processingPath = (String) request.getAttribute("processingPath");
         String contextPath = request.getContextPath();
@@ -90,9 +92,22 @@ public class owningController extends HttpServlet {
             request.setAttribute("homeContent", "owning");
             switch (splitter[3]) {
                 case "hostels":
-                    request.setAttribute("owningContent", "hostel");
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
-                    return;
+                    if (splitter.length == 5) {
+                        request.setAttribute("owningContent", "hostel");
+                        request.setAttribute("hostelSlug", splitter[4]);
+                        System.out.println(request.getAttribute("hostelSlug"));
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                        return;
+                    } else {
+                        switch (splitter[5]) {
+                            case "room":
+                                request.setAttribute("owningContent", "room");
+                                request.setAttribute("roomSlug", splitter[6]);
+                                System.out.println(request.getAttribute("roomSlug"));
+                                request.getRequestDispatcher("index.jsp").forward(request, response);
+                                return;
+                        }
+                    }
                 case "view":
                     request.setAttribute("owningContent", "view");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -133,6 +148,10 @@ public class owningController extends HttpServlet {
                 case "c":
                     System.out.println(Colors.YELLOW + "owningController forward to changePasswordServlet" + Colors.RESET);
                     request.getRequestDispatcher("").forward(request, response);
+                    return;
+                case "createHostel":
+                    System.out.println(Colors.YELLOW + "owningController forward to createHostelServlet" + Colors.RESET);
+                    request.getRequestDispatcher("createHostelServlet").forward(request, response);
                     return;
             }
         } else {

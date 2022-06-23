@@ -4,7 +4,8 @@
     Author     : lekha
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 
@@ -19,6 +20,12 @@
         </li>
         <li <c:if test="${currentPage eq 'create-hostel'}">class="active"</c:if>>
             <a href="${pageContext.request.contextPath}/home/owning/create-hostel">Create new Hostel</a>
+        </li>
+        <li <c:if test="${currentPage eq 'hostel'}">class="active"</c:if>>
+            <a href="${pageContext.request.contextPath}/home/owning/hostel/create-room">Create Room</a>
+        </li>
+        <li <c:if test="${currentPage eq 'room'}">class="active"</c:if>>
+            <a href="${pageContext.request.contextPath}/home/owning/hostel/room/create-contracts">Create Contracts</a>
         </li>
     </ul>
 </nav>

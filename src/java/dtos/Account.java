@@ -165,4 +165,11 @@ public class Account implements Serializable{
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" + "accountId=" + accountId + ", username=" + username + ", hashedPassword=" + hashedPassword + ", role=" + role + ", firstname=" + firstname + ", lastname=" + lastname + ", fullname=" + fullname + ", email=" + email + ", phone=" + phone + ", idCardNumber=" + idCardNumber + ", status=" + status + ", dateOfBirth=" + dateOfBirth + ", createdAt=" + createdAt + '}';
+    }
+    
+    
 }

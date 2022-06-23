@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
 <form method="POST" action="#" class="register-form">
     <div class="form-row">
         <div class="form-group">
