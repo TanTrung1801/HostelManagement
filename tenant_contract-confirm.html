@@ -120,7 +120,7 @@
                             </a>
                         </div>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -137,10 +137,6 @@
         <!-- Sidebar Holder -->
         <nav id="menu">
             <ul class="list-unstyled components">
-                <li>
-                    <a href="#">Home</a>
-                </li>
-
                 <li >
                     <a href="#">My Contract</a>
                 </li>
@@ -149,7 +145,7 @@
                     <a href="#">Transaction</a>
                 </li>
 
-                <li  class="active">
+                <li>
                     <a href="#">Feedback</a>
                 </li>
 
@@ -172,55 +168,139 @@
             <div class="row">
                 <ol class="col-12 breadcrumb">
                     <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Feedback</li>
+                    <li class="breadcrumb-item active">Notification</li>
+                    
+
                 </ol>
                 <div class="col-12">
-                    <h3>Feedback</h3>
+                    <h3>New Contract</h3>
 
                 </div>
             </div>
 
 
-            <div class="container-fluid my-5">
-                <div class="col-12 col-md-9">
-                    <form>
-                        <div class="form-group row ">
-                            <label for="hostel_name" class="col-md-2 col-form-label">Hostel Name</label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control" id="hostel_name" name="hostel_name" placeholder="Hostel Name">
-                            </div>
+            <div class="container-fluid mt-5 mb-5">
+
+
+
+
+
+                <div class="col-md-8 col-lg-8 col-xl-8 offset-sm-2 ">
+                    <form method="POST" action="/HostelManagement_main/login/submit" class="register-form "
+                        id="login-form">
+
+
+
+
+                        <div class="form-group">
+                            <label class="form-label" for="Hoatel_name">
+                                Hostel Name
+                            </label>
+                            <input type="text" name="username" id="Hostel_name" placeholder="Hostel_Name"
+                                value="Sky9 Hostel" class="form-control" disabled="">
+
                         </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="Room_name">
+                                Room Name
+                            </label>
+                            <input type="text" name="username" id="Room_name" placeholder="Room_Name" value="Room 101"
+                                class="form-control" disabled="">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="Tenant_id">
+                                Tenant ID
+                            </label>
+                            <input type="text" name="tenant_id" id="tenant_id" placeholder="Tenant ID" value="LNK12345evr"
+                                class="form-control" required="">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="Tenant_name">
+                                Tenant Name
+                            </label>
+                            <input type="text" name="tenant_name" id="tenant_name" placeholder="Tenant Name" value="Le Nguyen Khang"
+                                class="form-control" required="">
+
+                        </div>
+
+
+                      
+
+                        <div class="form-group">
+
+                            <label class="form-label" for="Price">
+                                Price
+                            </label>
+                            <div class="input-group">
+                                <input type="number" name="price" id="price" placeholder="price" value="100"
+                                    maxlength="16" class="form-control" min="0" disabled>
+                                <span class="input-group-text">$</span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="form-label" for="Deposit">
+                                Deposit
+                            </label>
+                            <div class="input-group">
+                                <input type="number" name="Deposit" id="Deposit" placeholder="Deposit" value="200"
+                                    maxlength="16" class="form-control" min="0" disabled>
+                                <span class="input-group-text">$</span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="dateOfBirth">Start Date</label>
+                            <input type="date" name="Start_Date" id="Start_Date" placeholder="Start Date" value="22/2/2011"
+                                class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="dateOfBirth">End Date</label>
+                            <input type="date" name="End_Date" id="End_Date" placeholder="End_ Date" value="22/2/2022"
+                                class="form-control" disabled>
+                        </div>
+
+
+
                         
-                        
-                        
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-2">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="approve" id="approve" value="">
-                                    <label class="form-check-label" for="approve">
-                                        <strong>Show your room ID?</strong>
-                                    </label>
-                                </div>
-                            </div>
-                            
+
+
+
+
+                        <div class="text-center text-lg-start my-4 py-2">
+
+
+                            <input type="submit" name="action" id="signup" value="Confirm"
+                                class="form-submit btn btn-success"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;background-color:#628272">
+                            <button type="reset" class="btn btn-outline-secondary">Cancel</button>
                         </div>
-                        <div class="form-group row">
-                            <label for="feedback" class="col-md-2 col-form-label">Your Feedback</label>
-                            <div class="col-md-10">
-                                <textarea class="form-control" id="feedback" name="feedback" rows="12"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="offset-md-2 col-md-10 mt-5">
-                                <button type="submit" class="btn btn-green">Send Feedback</button>
-                            </div>
-                        </div>
+
+
+
+
+
+
                     </form>
                 </div>
             </div>
-
-
         </div>
+
+
+    </div>
+
+
+
+    </div>
     </div>
 
     <footer class="footer">
@@ -259,6 +339,7 @@
     </footer>
 
 
+    <script src='https://cdn.jsdelivr.net/gh/vietblogdao/js/districts.min.js'></script>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -270,7 +351,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-
+    <script src="/js/main.js"></script>
 
 </body>
 
