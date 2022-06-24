@@ -78,13 +78,16 @@ public class owningController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+<<<<<<< HEAD
         request.setCharacterEncoding("utf-8");
+=======
+        request.setCharacterEncoding("utf-8");   
+>>>>>>> ec13895d2b45dc633cde81c974619f3c1a9e779b
         HttpSession session = request.getSession();
         String processingPath = (String) request.getAttribute("processingPath");
         String contextPath = request.getContextPath();
 
         String[] splitter = processingPath.split("/");
-
         if (splitter.length == 3) {
             response.sendRedirect(contextPath + "/home/owning/view");
             return;
@@ -92,6 +95,7 @@ public class owningController extends HttpServlet {
             request.setAttribute("homeContent", "owning");
             switch (splitter[3]) {
                 case "hostels":
+<<<<<<< HEAD
                     if (splitter.length == 5) {
                         request.setAttribute("owningContent", "hostel");
                         request.setAttribute("hostelSlug", splitter[4]);
@@ -108,6 +112,13 @@ public class owningController extends HttpServlet {
                                 return;
                         }
                     }
+=======
+                    request.setAttribute("owningContent", "hostel");
+                    request.setAttribute("hostelSlug", splitter[4]);
+                    System.out.println(request.getAttribute("hostelSlug"));
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    return;
+>>>>>>> ec13895d2b45dc633cde81c974619f3c1a9e779b
                 case "view":
                     request.setAttribute("owningContent", "view");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
