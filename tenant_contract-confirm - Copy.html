@@ -137,34 +137,29 @@
         <!-- Sidebar Holder -->
         <nav id="menu">
             <ul class="list-unstyled components">
+                <li >
+                    <a href="#">My Contract</a>
+                </li>
                 <li class="active">
-                    <a href="#">Contract List</a>
+                    
                 </li>
-                <li>
-                    <a href="#">Create New Contact</a>
-                </li>
-
-                
-
-
-
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle">Transaction</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
+                        
                         <li>
-                            <a href="#">Create New</a>
+                            <a href="#">My Bill</a>
                         </li>
                         <li>
-                            <a href="#">View All</a>
+                            <a href="#">History</a>
                         </li>
-                        <li>
-                            <a href="#">View History</a>
-                        </li>
-                        <li>
-                            <a href="#">Report</a>
-                        </li>
+                        
                     </ul>
+                </li>
+
+                <li>
+                    <a href="#">Feedback</a>
                 </li>
 
                 <li>
@@ -186,120 +181,139 @@
             <div class="row">
                 <ol class="col-12 breadcrumb">
                     <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                    <li class="breadcrumb-item">My Hostel</li>
-                    <li class="breadcrumb-item ">Sky9 Hostel</li>
-                    <li class="breadcrumb-item ">Room List</li>
-                    <li class="breadcrumb-item active">Room 101</li>
+                    <li class="breadcrumb-item active">Notification</li>
+                    
 
                 </ol>
                 <div class="col-12">
-                    <h3>Room 101</h3>
+                    <h3>New Contract</h3>
 
                 </div>
             </div>
 
-            <div>
-                <h4 class="text-right mr-5">No.Contract:    4/10</h4>
 
-            </div>
-            <div>
-                <div class="row mt-5">
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <div class="card h-100">
-
-                            <div class="card-body ">
-                                <h5 class="card-title">Tran Hoang Kim Ngan</h5>
-                                <div class="card-text">
-                                    <p class="mb-0">Start date: 02/02/2022</p>
-                                    <p class="mb-0">End date: 02/05/2022</p>
-                                    <p class="mb-0">Price: 100$</p>
-                                    <p class="mb-0">Deposit: 200$</p>
-
-                                </div>
-
-                            
-                                <a href="javascript:void(0)" class="btn btn-green ">Detail</a>
-                                <a href="javascript:void(0)" class="btn btn-outline-success" style="background-color:#fafafa; color:#628272;">Create Bill</a>
+            <div class="container-fluid mt-5 mb-5">
 
 
-                            </div>
+
+
+
+                <div class="col-md-8 col-lg-8 col-xl-8 offset-sm-2 ">
+                    <form method="POST" action="/HostelManagement_main/login/submit" class="register-form "
+                        id="login-form">
+
+
+
+
+                        <div class="form-group">
+                            <label class="form-label" for="Hoatel_name">
+                                Hostel Name
+                            </label>
+                            <input type="text" name="username" id="Hostel_name" placeholder="Hostel_Name"
+                                value="Sky9 Hostel" class="form-control" disabled="">
+
                         </div>
-                    </div>
 
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <div class="card h-100">
+                        <div class="form-group">
+                            <label class="form-label" for="Room_name">
+                                Room Name
+                            </label>
+                            <input type="text" name="username" id="Room_name" placeholder="Room_Name" value="Room 101"
+                                class="form-control" disabled="">
 
-                            <div class="card-body ">
-                                <h5 class="card-title">Lê Nguyên Khang</h5>
-                                <div class="card-text">
-                                    <p class="mb-0">Start date: 02/02/2022</p>
-                                    <p class="mb-0">End date: 02/02/2022</p>
-                                    <p class="mb-0">Price: 100$</p>
-                                    <p class="mb-0">Deposit: 200$</p>
-
-                                </div>
-
-                            
-                                <a href="javascript:void(0)" class="btn btn-green ">Detail</a>
-                                <a href="javascript:void(0)" class="btn btn-outline-success" style="background-color:#fafafa; color:#628272;">Create Bill</a>
-
-                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <div class="card h-100">
+                        <div class="form-group">
+                            <label class="form-label" for="Tenant_id">
+                                Tenant ID
+                            </label>
+                            <input type="text" name="tenant_id" id="tenant_id" placeholder="Tenant ID" value="LNK12345evr"
+                                class="form-control" required="">
 
-                            <div class="card-body ">
-                                <h5 class="card-title">ABC</h5>
-                                <div class="card-text">
-                                    <p class="mb-0">Start date: 02/02/2022</p>
-                                    <p class="mb-0">End date: 02/02/2022</p>
-                                    <p class="mb-0">Price: 100$</p>
-                                    <p class="mb-0">Deposit: 200$</p>
-
-                                </div>
-
-                            
-                                <a href="javascript:void(0)" class="btn btn-green ">Detail</a>
-                                <a href="javascript:void(0)" class="btn btn-outline-success" style="background-color:#fafafa; color:#628272;">Create Bill</a>
-
-                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <div class="card h-100">
 
-                            <div class="card-body ">
-                                <h5 class="card-title">DFG</h5>
-                                <div class="card-text">
-                                    <p class="mb-0">Start date: 02/02/2022</p>
-                                    <p class="mb-0">End date: 02/02/2022</p>
-                                    <p class="mb-0">Price: 100$</p>
-                                    <p class="mb-0">Deposit: 200$</p>
+                        <div class="form-group">
+                            <label class="form-label" for="Tenant_name">
+                                Tenant Name
+                            </label>
+                            <input type="text" name="tenant_name" id="tenant_name" placeholder="Tenant Name" value="Le Nguyen Khang"
+                                class="form-control" required="">
 
-                                </div>
-
-                            
-                                <a href="javascript:void(0)" class="btn btn-green ">Detail</a>
-                                <a href="javascript:void(0)" class="btn btn-outline-success" style="background-color:#fafafa; color:#628272;">Create Bill</a>
-
-                            </div>
                         </div>
-                    </div>
 
+
+                      
+
+                        <div class="form-group">
+
+                            <label class="form-label" for="Price">
+                                Price
+                            </label>
+                            <div class="input-group">
+                                <input type="number" name="price" id="price" placeholder="price" value="100"
+                                    maxlength="16" class="form-control" min="0" disabled>
+                                <span class="input-group-text">$</span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="form-label" for="Deposit">
+                                Deposit
+                            </label>
+                            <div class="input-group">
+                                <input type="number" name="Deposit" id="Deposit" placeholder="Deposit" value="200"
+                                    maxlength="16" class="form-control" min="0" disabled>
+                                <span class="input-group-text">$</span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="dateOfBirth">Start Date</label>
+                            <input type="date" name="Start_Date" id="Start_Date" placeholder="Start Date" value="22/2/2011"
+                                class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="dateOfBirth">End Date</label>
+                            <input type="date" name="End_Date" id="End_Date" placeholder="End_ Date" value="22/2/2022"
+                                class="form-control" disabled>
+                        </div>
+
+
+
+                        
+
+
+
+
+                        <div class="text-center text-lg-start my-4 py-2">
+
+
+                            <input type="submit" name="action" id="signup" value="Confirm"
+                                class="form-submit btn btn-success"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;background-color:#628272">
+                            <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                        </div>
+
+
+
+
+
+
+                    </form>
                 </div>
-
-
-
-
-                
             </div>
-
-
-
-
         </div>
+
+
+    </div>
+
+
+
+    </div>
     </div>
 
     <footer class="footer">
@@ -338,7 +352,8 @@
     </footer>
 
 
-    <!-- jQuery CDN  -->
+    <script src='https://cdn.jsdelivr.net/gh/vietblogdao/js/districts.min.js'></script>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <!-- Popper.JS -->
@@ -349,8 +364,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-    <!-- Pagination CDN-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.js"></script>
+    <script src="/js/main.js"></script>
 
 </body>
 
