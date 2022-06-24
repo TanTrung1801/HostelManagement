@@ -137,33 +137,20 @@
         <!-- Sidebar Holder -->
         <nav id="menu">
             <ul class="list-unstyled components">
-                
-                <li class="active">
-                    <a href="#">Detail Information</a>
-                </li>
-
-                
                 <li >
-                    <a href="#roomList" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle">Room List</a>
-                    <ul class="collapse list-unstyled" id="roomList">
-                        <li>
-                            <a href="#">Create New Room</a>
-                        </li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                        <li>
-                            <a href="#">Manager</a>
-                        </li>
-                    </ul>
+                    <a href="#">Contract List</a>
+                </li>
+                <li>
+                    <a href="#">Create New Contact</a>
                 </li>
 
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                <li >
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true"
                         class="dropdown-toggle">Transaction</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        
+                    <ul class="collapse list-unstyled show" id="pageSubmenu">
+                        <li class="active">
+                            <a href="#">Create New</a>
+                        </li>
                         <li>
                             <a href="#">View All</a>
                         </li>
@@ -175,9 +162,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">Feedback</a>
-                </li>
+                
                 <li>
                     <a href="#">Help Center</a>
                 </li>
@@ -197,64 +182,59 @@
             <div class="row">
                 <ol class="col-12 breadcrumb">
                     <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                    <li class="breadcrumb-item ">My Hostel</li>
+                    <li class="breadcrumb-item">My Hostel</li>
                     <li class="breadcrumb-item ">Sky9 Hostel</li>
-                    <li class="breadcrumb-item active">Detail Information</li>
+                    <li class="breadcrumb-item ">Room List</li>
+                    <li class="breadcrumb-item ">Room 101</li>
+                    <li class="breadcrumb-item active">Create New Transaction</li>
+
                 </ol>
                 <div class="col-12">
-                    <h3>Sky9 Hostel</h3>
+                    <h3>Create New Transaction</h3>
 
                 </div>
             </div>
 
 
-            <div class="container-fluid mb-5">
-                <div class=" d-flex mt-5  ">
-                    <div class="col-md-9 col-lg-5 col-xl-4 offset-sm-1 mt-5">
-                        <div class="card" height="auto" width="auto">
-                            <div class=" justify-content-between align-items-center">
-                                <img src="img/carousel-1.jpg" alt="hostel-img"
-                                    class="d-block bg-white border shadow my-4 mx-auto" height="300"
-                                    width="300" id="uploadedHosImg">
-                                <div class="button-wrapper mx-4">
+            <div class="container-fluid card mb-5">
+                <div class="px-3 py-3    ">
 
-                                    <label for="upload" class="btn btn-green mx-5 me-2 mb-4" tabindex="0">
-                                        <span class="d-none d-sm-block">Upload New photo</span>
-                                        <i class="bx bx-upload d-block d-sm-none"></i>
-                                        <input type="file" id="upload" class="account-file-input" hidden=""
-                                            accept="image/png, image/jpeg">
-                                    </label>
-                                    
+                    <div class="col-md-12 col-lg-8 col-xl-6 offset-sm-1 ">
+
+                    </div>
+                    <form method="POST" action="/HostelManagement_main/login/submit" class="register-form"
+                        id="login-form">
+                        <div class="form-row border-bottom mb-4 ">
+                            <div class="form-group col-5 col-sm-5 mr-auto ">
+                                <label class="form-label font-weight-bold py-2" for="name">Owner</label>
+                                <input type="text" name="owner_name" id="owner_name" value="Owner Name"
+                                    class="form-control" disabled>
+
+                                <label class="form-label font-weight-bold py-2" for="name">Tenant</label>
+                                <select class="form-control " required="">
+                                    <option value="">Tran Hoang Kim Ngan</option>
+                                    <option value="">Le Nguyen Khang </option>
+                                    <option value="">abc</option>
+                                    <option value="">dfg</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6 col-sm-6 ">
+                                <div class="form-row">
+                                    <div class="form-group col-6 col-sm-6">
+                                        <label class="form-label font-weight-bold py-2" for="name">Created Date</label>
+                                        <input class="form-control" type="date" name="" id="current_date">
+                                    </div>
 
                                 </div>
+
                             </div>
                         </div>
 
-                    </div>
-                    <div class="col-md-8 col-lg-6 col-xl-5 offset-sm-1 my-5">
-                        <form method="POST" action="/HostelManagement_main/login/submit" class="register-form"
-                            id="login-form">
-                            <div class="form-group ">
-                                <label class="form-label" for="name">Hostel Name</label>
-                                <input type="text" name="hostel_name" id="hostel_name" placeholder="Hostel Name"
-                                    value="" class="form-control" required="">
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-6 col-sm-6">
-                                    <label class="form-label" for="firstname">Hostel ID</label>
-                                    <input type="text" name="hostel_id" id="hostel_id" placeholder="123"
-                                        value="" class="form-control" required="">
-                                </div>
-
-                                <div class="form-group col-6 col-sm-6">
-                                    <label class="form-label" for="lastname">Owner ID</label>
-                                    <input type="text" name="owner_id" id="owner_id" placeholder="123"
-                                        value="" class="form-control" required="">
-                                </div>
-                            </div>
-
-                            <div class="form-row ">
+                        <div class="px-3 py-2  font-weight-bold text-white d-flex justify-content-between" style="background-color:#628272 ; ">
+                            <h5>Detail Payment</h5>
+                            <h5 ><i class="fa fa-plus-circle" aria-hidden="true"></i>Add</h5>
+                        </div>
+                        <!-- <div class="form-row ">
                                 <div class="form-group col-6 col-sm-6">
                                     <label for="city">City
                                         <select class="form-control "  name="calc_shipping_provinces" required="">
@@ -269,51 +249,173 @@
                                         <select class="form-control mx-0 " name="calc_shipping_district" required="">
                                             <option value="">Ward</option>
                                           </select>
-                                          
+                                          <input class="billing_address_1" name="" type="hidden" value="">
+                                          <input class="billing_address_2" name="" type="hidden" value="">
                                       </label>
                                  </div>
                                  
                                   
+                            </div> -->
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Dien</td>
+                                    <td>102$</td>
+                                    <td>
+                                        <div class="dropdown no-arrow">
+
+
+                                            <a class="dropdown-toggle hide-arrow" href="#" id="userDropdown"
+                                                role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+
+                                                <button type="button" class="btn p-0  ">
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </button>
+                                            </a>
+
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                                aria-labelledby="userDropdown">
+                                                <a class="dropdown-item" href="#">
+                                                    Edit
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    Delete
+                                                </a>
+
+                                            </div>
+
+
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Nuoc</td>
+                                    <td>55&</td>
+                                    <td>
+                                        <div class="dropdown no-arrow">
+
+
+                                            <a class="dropdown-toggle hide-arrow" href="#" id="userDropdown"
+                                                role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+
+                                                <button type="button" class="btn p-0  ">
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </button>
+                                            </a>
+
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                                aria-labelledby="userDropdown">
+                                                <a class="dropdown-item" href="#">
+                                                    Edit
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    Delete
+                                                </a>
+
+                                            </div>
+
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Giu xe</td>
+                                    <td>100&</td>
+                                    <td>
+                                        <div class="dropdown no-arrow">
+
+
+                                            <a class="dropdown-toggle hide-arrow" href="#" id="userDropdown"
+                                                role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+
+                                                <button type="button" class="btn p-0  ">
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                </button>
+                                            </a>
+
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                                aria-labelledby="userDropdown">
+                                                <a class="dropdown-item" href="#">
+                                                    Edit
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    Delete
+                                                </a>
+
+                                            </div>
+
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+                        
+                        <div class="form-row">
+                            <div class="form-group col-6 col-sm-6">
+                                <label for="exampleFormControlTextarea1">Description</label>
+                                <textarea class="form-control" rows="3">Chuyen khoan den ngan hang ABC. STK: 0356XXXX997XX</textarea>
+                            </div>
+                            <div class="form-group col-6 col-sm-6">
+                                <div class="">
+                                    Total
+                                </div>
+                                <div class="text-white rounded py-1 list-unstyled" style="background-color: #628272;">
+                                    <ul>
+                                        <ol>Subtotal</ol>
+                                        <ol>tax </ol>
+                                        <ol>Total</ol>
+                                    </ul>
+
+
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="form-label" for="street">
-                                    Street
-                                </label>
-                                <input type="text" name="street" id="street" placeholder="Street"
-                                      class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="street">
-                                    Address
-                                </label>
-                                <input type="text" name="street" id="street" placeholder="Street"
-                                      class="form-control">
-                            </div>
+
                             <div class="text-center text-lg-start my-4 py-2">
 
 
-                                <input type="submit" name="action" id="update" value="Update"
+                                <input type="submit" name="action" id="signup" value="Create"
                                     class="form-submit btn btn-success"
                                     style="padding-left: 2.5rem; padding-right: 2.5rem;background-color:#628272">
                                 <button type="reset" class="btn btn-outline-secondary">Reset</button>
                             </div>
 
 
+                        </div>
 
 
 
 
-                        </form>
-                    </div>
+                    </form>
                 </div>
-
-
             </div>
 
 
-           
         </div>
+
+
+
+    </div>
     </div>
 
     <footer class="footer">
@@ -364,7 +466,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-<script src="/js/main.js"></script>
+    <script src="/js/main.js"></script>
 
 </body>
 

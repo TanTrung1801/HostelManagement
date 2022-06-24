@@ -120,7 +120,7 @@
                             </a>
                         </div>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -137,16 +137,17 @@
         <!-- Sidebar Holder -->
         <nav id="menu">
             <ul class="list-unstyled components">
-                <li>
-                    <a href="#">Home</a>
+                <li >
+                    <a href="#">Detail Information</a>
                 </li>
 
+                
                 <li class="active">
-                    <a href="#myHostel" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle">My Hostel</a>
-                    <ul class="collapse list-unstyled" id="myHostel">
+                    <a href="#roomList" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Room List</a>
+                    <ul class="collapse list-unstyled" id="roomList">
                         <li>
-                            <a href="#">Create New</a>
+                            <a href="#">Create New Room</a>
                         </li>
                         <li>
                             <a href="#">View All</a>
@@ -157,15 +158,11 @@
                     </ul>
                 </li>
 
-                
-
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle">Transaction</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Create New</a>
-                        </li>
+                        
                         <li>
                             <a href="#">View All</a>
                         </li>
@@ -199,10 +196,12 @@
             <div class="row">
                 <ol class="col-12 breadcrumb">
                     <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                    <li class="breadcrumb-item active">My Hostel</li>
+                    <li class="breadcrumb-item ">My Hostel</li>
+                    <li class="breadcrumb-item ">Sky9 Hostel</li>
+                    <li class="breadcrumb-item active">Room List</li>
                 </ol>
                 <div class="col-12">
-                    <h3>My Hostel</h3>
+                    <h3>Room List</h3>
 
                 </div>
             </div>
@@ -210,16 +209,89 @@
 
             <div>
 
-                <div class="col-md-6 col-lg-4">
-                    <div class="card text-center mb-3">
-                      <div class="card-body">
-                        <h5 class="card-title">CT3 16.12</h5>
-                        <p class="card-text"></p>
-                        <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
-                      </div>
+                <div class="card mx-5 my-5">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead>
+                                <tr class="btn-green">
+                                    <th>No.</th>
+                                    <th>Room Name</th>
+                                    <th>No Contract</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                <tr>
+                                    <td> 1</td>
+                                  
+                                    <td>
+                                        101
+                                    </td>
+                                    <td>8/10</td>
+                                    <td>
+                                        <div class="dropdown no-arrow">
+                                            
+
+                                            <a class="dropdown-toggle hide-arrow" href="#" id="userDropdown" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                
+                                                <button type="button" class="btn p-0  "
+                                                >
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </button>
+                                            </a>
+
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                                <a class="dropdown-item" href="#">
+                                                    Detail
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    Edit
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td> 2</td>
+                                  
+                                    <td>
+                                        102
+                                    </td>
+                                    <td>6/10</td>
+                                    <td>
+                                        <div class="dropdown no-arrow">
+                                            
+
+                                            <a class="dropdown-toggle hide-arrow" href="#" id="userDropdown" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                
+                                                <button type="button" class="btn p-0  "
+                                                >
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </button>
+                                            </a>
+
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                                <a class="dropdown-item" href="#">
+                                                    Detail
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    Edit
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
                     </div>
-                  </div>
-                
+                </div>
+
 
             </div>
 

@@ -137,47 +137,31 @@
         <!-- Sidebar Holder -->
         <nav id="menu">
             <ul class="list-unstyled components">
-                
-                <li class="active">
-                    <a href="#">Detail Information</a>
-                </li>
-
-                
                 <li >
-                    <a href="#roomList" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle">Room List</a>
-                    <ul class="collapse list-unstyled" id="roomList">
-                        <li>
-                            <a href="#">Create New Room</a>
-                        </li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                        <li>
-                            <a href="#">Manager</a>
-                        </li>
-                    </ul>
+                    <a href="#">My Contract</a>
                 </li>
-
+                <li class="active">
+                    
+                </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle">Transaction</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         
                         <li>
-                            <a href="#">View All</a>
+                            <a href="#">My Bill</a>
                         </li>
                         <li>
-                            <a href="#">View History</a>
+                            <a href="#">History</a>
                         </li>
-                        <li>
-                            <a href="#">Report</a>
-                        </li>
+                        
                     </ul>
                 </li>
+
                 <li>
                     <a href="#">Feedback</a>
                 </li>
+
                 <li>
                     <a href="#">Help Center</a>
                 </li>
@@ -197,123 +181,139 @@
             <div class="row">
                 <ol class="col-12 breadcrumb">
                     <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                    <li class="breadcrumb-item ">My Hostel</li>
-                    <li class="breadcrumb-item ">Sky9 Hostel</li>
-                    <li class="breadcrumb-item active">Detail Information</li>
+                    <li class="breadcrumb-item active">Notification</li>
+                    
+
                 </ol>
                 <div class="col-12">
-                    <h3>Sky9 Hostel</h3>
+                    <h3>New Contract</h3>
 
                 </div>
             </div>
 
 
-            <div class="container-fluid mb-5">
-                <div class=" d-flex mt-5  ">
-                    <div class="col-md-9 col-lg-5 col-xl-4 offset-sm-1 mt-5">
-                        <div class="card" height="auto" width="auto">
-                            <div class=" justify-content-between align-items-center">
-                                <img src="img/carousel-1.jpg" alt="hostel-img"
-                                    class="d-block bg-white border shadow my-4 mx-auto" height="300"
-                                    width="300" id="uploadedHosImg">
-                                <div class="button-wrapper mx-4">
+            <div class="container-fluid mt-5 mb-5">
 
-                                    <label for="upload" class="btn btn-green mx-5 me-2 mb-4" tabindex="0">
-                                        <span class="d-none d-sm-block">Upload New photo</span>
-                                        <i class="bx bx-upload d-block d-sm-none"></i>
-                                        <input type="file" id="upload" class="account-file-input" hidden=""
-                                            accept="image/png, image/jpeg">
-                                    </label>
-                                    
 
-                                </div>
-                            </div>
+
+
+
+                <div class="col-md-8 col-lg-8 col-xl-8 offset-sm-2 ">
+                    <form method="POST" action="/HostelManagement_main/login/submit" class="register-form "
+                        id="login-form">
+
+
+
+
+                        <div class="form-group">
+                            <label class="form-label" for="Hoatel_name">
+                                Hostel Name
+                            </label>
+                            <input type="text" name="username" id="Hostel_name" placeholder="Hostel_Name"
+                                value="Sky9 Hostel" class="form-control" disabled="">
+
                         </div>
 
-                    </div>
-                    <div class="col-md-8 col-lg-6 col-xl-5 offset-sm-1 my-5">
-                        <form method="POST" action="/HostelManagement_main/login/submit" class="register-form"
-                            id="login-form">
-                            <div class="form-group ">
-                                <label class="form-label" for="name">Hostel Name</label>
-                                <input type="text" name="hostel_name" id="hostel_name" placeholder="Hostel Name"
-                                    value="" class="form-control" required="">
+                        <div class="form-group">
+                            <label class="form-label" for="Room_name">
+                                Room Name
+                            </label>
+                            <input type="text" name="username" id="Room_name" placeholder="Room_Name" value="Room 101"
+                                class="form-control" disabled="">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="Tenant_id">
+                                Tenant ID
+                            </label>
+                            <input type="text" name="tenant_id" id="tenant_id" placeholder="Tenant ID" value="LNK12345evr"
+                                class="form-control" required="">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="Tenant_name">
+                                Tenant Name
+                            </label>
+                            <input type="text" name="tenant_name" id="tenant_name" placeholder="Tenant Name" value="Le Nguyen Khang"
+                                class="form-control" required="">
+
+                        </div>
+
+
+                      
+
+                        <div class="form-group">
+
+                            <label class="form-label" for="Price">
+                                Price
+                            </label>
+                            <div class="input-group">
+                                <input type="number" name="price" id="price" placeholder="price" value="100"
+                                    maxlength="16" class="form-control" min="0" disabled>
+                                <span class="input-group-text">$</span>
                             </div>
 
-                            <div class="form-row">
-                                <div class="form-group col-6 col-sm-6">
-                                    <label class="form-label" for="firstname">Hostel ID</label>
-                                    <input type="text" name="hostel_id" id="hostel_id" placeholder="123"
-                                        value="" class="form-control" required="">
-                                </div>
+                        </div>
 
-                                <div class="form-group col-6 col-sm-6">
-                                    <label class="form-label" for="lastname">Owner ID</label>
-                                    <input type="text" name="owner_id" id="owner_id" placeholder="123"
-                                        value="" class="form-control" required="">
-                                </div>
+                        <div class="form-group">
+
+                            <label class="form-label" for="Deposit">
+                                Deposit
+                            </label>
+                            <div class="input-group">
+                                <input type="number" name="Deposit" id="Deposit" placeholder="Deposit" value="200"
+                                    maxlength="16" class="form-control" min="0" disabled>
+                                <span class="input-group-text">$</span>
                             </div>
 
-                            <div class="form-row ">
-                                <div class="form-group col-6 col-sm-6">
-                                    <label for="city">City
-                                        <select class="form-control "  name="calc_shipping_provinces" required="">
-                                            <option value="">abc</option>
-                                        </select>
-                                    </label>
-                                </div>
-                                
-                                
-                                 <div class="form-group  col-6 col-sm-6">
-                                    <label for="ward">Ward
-                                        <select class="form-control mx-0 " name="calc_shipping_district" required="">
-                                            <option value="">Ward</option>
-                                          </select>
-                                          
-                                      </label>
-                                 </div>
-                                 
-                                  
-                            </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label class="form-label" for="street">
-                                    Street
-                                </label>
-                                <input type="text" name="street" id="street" placeholder="Street"
-                                      class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="street">
-                                    Address
-                                </label>
-                                <input type="text" name="street" id="street" placeholder="Street"
-                                      class="form-control">
-                            </div>
-                            <div class="text-center text-lg-start my-4 py-2">
+                        <div class="form-group">
+                            <label class="form-label" for="dateOfBirth">Start Date</label>
+                            <input type="date" name="Start_Date" id="Start_Date" placeholder="Start Date" value="22/2/2011"
+                                class="form-control" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="dateOfBirth">End Date</label>
+                            <input type="date" name="End_Date" id="End_Date" placeholder="End_ Date" value="22/2/2022"
+                                class="form-control" disabled>
+                        </div>
 
 
-                                <input type="submit" name="action" id="update" value="Update"
-                                    class="form-submit btn btn-success"
-                                    style="padding-left: 2.5rem; padding-right: 2.5rem;background-color:#628272">
-                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
-                            </div>
+
+                        
+
+
+
+
+                        <div class="text-center text-lg-start my-4 py-2">
+
+
+                            <input type="submit" name="action" id="signup" value="Confirm"
+                                class="form-submit btn btn-success"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;background-color:#628272">
+                            <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                        </div>
 
 
 
 
 
 
-                        </form>
-                    </div>
+                    </form>
                 </div>
-
-
             </div>
-
-
-           
         </div>
+
+
+    </div>
+
+
+
+    </div>
     </div>
 
     <footer class="footer">
@@ -364,7 +364,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
-<script src="/js/main.js"></script>
+    <script src="/js/main.js"></script>
 
 </body>
 
