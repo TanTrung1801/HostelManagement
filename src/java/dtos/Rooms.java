@@ -25,10 +25,9 @@ public class Rooms {
         this.max_contract = 0;
     }
     
-    public Rooms(int hostel_id, String name, String room_slug, int max_contract) {
+    public Rooms(int hostel_id, String name, int max_contract) {
         this.hostel_id = hostel_id;
         this.name = name;
-        this.room_slug = room_slug;
         this.max_contract = max_contract;
     }
     

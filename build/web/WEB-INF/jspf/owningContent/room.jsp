@@ -14,20 +14,36 @@
 <jsp:useBean id='AccountDAO' class='daos.AccountDAO' scope='page'/>
 
 <c:set var="contractList" value="${ContractDAO.getListContractsStatus('room_id', RoomsDAO.getOne('room_slug', requestScope.roomSlug).room_id.toString())}"/>
-
 <c:choose>
-    <c:when test="${(contractList != null) and (not empty contractList)}"> 
-        <div>
-            <c:forEach var="contracts" items="${contractList}">
-                <div>
-                    <h3>Client Name:${AccountDAO.getOne('account_id',contracts.client_id).fullname}</h3>
-                    <p>Room_ID: ${contracts.room_id} - Price: ${contracts.room_price}- Start: ${contracts.start_date}- End: ${contracts.end_date}- deposit: ${contracts.deposit}</p>
-                </div>
-                <div class ="line"></div>
-            </c:forEach>
+    <c:when test="${(contractList != null) and (not empty contractList)}">
+        <div class="form-group">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Client Name:</th>
+                        <th>Price </th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Deposit</th>
+                        <th>Create Bill<th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="contracts" items="${contractList}">
+                        <tr>
+                            <td>${AccountDAO.getOne('account_id',contracts.client_id).fullname}</td>
+                            <td>${contracts.room_price}</td>
+                            <td> ${contracts.start_date}</td>
+                            <td> ${contracts.end_date}</td>
+                            <td> ${contracts.deposit}</td>
+                            <td> <%-- tạo bill cho thằng thuê theo constracts --%></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
         </div>
     </c:when>
-     <c:otherwise>
-        <span><c:out value="you don't have any reting at this rooms"/></span>
+    <c:otherwise>
+        <span><c:out value="you don't have any rooms at this hostel"/></span>
     </c:otherwise>
 </c:choose>

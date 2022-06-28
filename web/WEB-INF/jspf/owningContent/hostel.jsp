@@ -7,18 +7,29 @@
 <jsp:useBean id='RoomsDAO' class='daos.RoomsDAO' scope='page'/>
 <c:set var="roomList" value="${RoomsDAO.getList('hostel_id', HostelDAO.getOne('hostel_slug', requestScope.hostelSlug).hostelId.toString())}"/>
 <c:choose>
-    <c:when test="${(roomList != null) and (not empty roomList)}"> 
-        <div>
-            <c:forEach var="room" items="${roomList}">
-                <div>
-                    <h3>${room.name}</h3>
-                    <p>${room.max_contract} - ${room.room_slug}</p>
-                    <a onclick="window.location = '${pageContext.request.contextPath}/home/owning/hostels/${hostel.hostelSlug}/room/${room.room_slug}'" class="btn btn-green " >Detail</a>
-                </div>
+    <c:when test="${(roomList != null) and (not empty roomList)}">
+        <div class="form-group">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Room Name</th>
+                        <th>Number of Renting Available: </th>
+                        <th> <th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="room" items="${roomList}">
+                        <tr>
+                            <td>${room.name}</td>
+                            <td>${room.max_contract}</td>
+                            <td> <a onclick="window.location = '${pageContext.request.contextPath}/home/owning/hostels/${hostel.hostelSlug}/room/${room.room_slug}'" class="btn btn-green " >Detail</a></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
         </div>
-            </c:forEach>
     </c:when>
-     <c:otherwise>
+    <c:otherwise>
         <span><c:out value="you don't have any rooms at this hostel"/></span>
     </c:otherwise>
 </c:choose>

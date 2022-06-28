@@ -21,11 +21,14 @@
         <li <c:if test="${currentPage eq 'create-hostel'}">class="active"</c:if>>
             <a href="${pageContext.request.contextPath}/home/owning/create-hostel">Create new Hostel</a>
         </li>
-        <li <c:if test="${currentPage eq 'hostel'}">class="active"</c:if>>
-            <a href="${pageContext.request.contextPath}/home/owning/hostel/create-room">Create Room</a>
+        
+        
+        <li <c:if test="${currentPage eq 'hostels'}">class="active"</c:if>>
+            <a href="${pageContext.request.contextPath}/home/owning/hostels/${requestScope.hostelSlug}/create-room">Create Room</a>
         </li>
+               
         <li <c:if test="${currentPage eq 'room'}">class="active"</c:if>>
-            <a href="${pageContext.request.contextPath}/home/owning/hostel/room/create-contracts">Create Contracts</a>
+            <a href="${pageContext.request.contextPath}/home/owning/hostel/${requestScope.hostelSlug}/room/${requestScope.roomSlug}/create-contracts">Create Contracts</a>
         </li>
     </ul>
 </nav>

@@ -41,16 +41,3 @@
     <input type="submit" value="Create"/>
     <input type ="reset" value ="reset"/>
 </form>
-
-<!--            <script>
-                var district = document.getElementById('district');
-                const districtList = ["AAAA", "BBBB", "CCC"];
-                districtList.forEach(a => {
-                    let option_elem = document.createElement('option');
-                    option_elem.value = a;
-                    option_elem.textContent = a+"asdasd";
-                    district.appendChild(option_elem);
-                });
-                
-                
-            </script> -->

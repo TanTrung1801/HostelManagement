@@ -52,8 +52,8 @@ public class owningController extends HttpServlet {
                 if (request.getParameter("action") != null) {
                     String action = request.getParameter("action");
                     switch (action) {
-                        case "create-Hostel":
-                            request.getRequestDispatcher("createHostelServlet").forward(request, response);
+                        case "":
+                            request.getRequestDispatcher("").forward(request, response);
                             return;
                         case "s":
                             request.getRequestDispatcher("s").forward(request, response);
@@ -79,7 +79,6 @@ public class owningController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        request.setCharacterEncoding("utf-8");   
         HttpSession session = request.getSession();
         String processingPath = (String) request.getAttribute("processingPath");
         String contextPath = request.getContextPath();
@@ -106,6 +105,11 @@ public class owningController extends HttpServlet {
                                 System.out.println(request.getAttribute("roomSlug"));
                                 request.getRequestDispatcher("index.jsp").forward(request, response);
                                 return;
+                            case "create-room":
+                                    request.setAttribute("hostelSlug", splitter[4]);
+                                    request.setAttribute("owningContent", "createRoom");
+                                request.getRequestDispatcher("index.jsp").forward(request, response);
+                                return;
                         }
                     }
                     request.setAttribute("owningContent", "hostel");
@@ -119,6 +123,13 @@ public class owningController extends HttpServlet {
                     return;
                 case "create-hostel":
                     request.setAttribute("owningContent", "createHostel");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    return;
+                case "create-room":
+                    if (splitter.length == 5) {
+                        request.setAttribute("hostelSlug", splitter[4]);
+                        request.setAttribute("owningContent", "createRoom");
+                    }
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     return;
             }
@@ -157,6 +168,10 @@ public class owningController extends HttpServlet {
                 case "createHostel":
                     System.out.println(Colors.YELLOW + "owningController forward to createHostelServlet" + Colors.RESET);
                     request.getRequestDispatcher("createHostelServlet").forward(request, response);
+                    return;
+                case "createRoom":
+                    System.out.println(Colors.YELLOW + "owningController forward to createRoomServlet" + Colors.RESET);
+                    request.getRequestDispatcher("createRoomServlet").forward(request, response);
                     return;
             }
         } else {

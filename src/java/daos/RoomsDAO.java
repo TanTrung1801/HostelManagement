@@ -15,139 +15,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import utilities.DatabaseConnection;
+import utilities.SlugGenerator;
 
 /**
  *
  * @author Truong Thanh Trung
  */
 public class RoomsDAO implements DAOInterface<Rooms> {
-//
-//    public static List<Rooms> getAllListRoom(String indexValue) throws SQLException, Exception {
-//        Connection cn = null;
-//        List<Rooms> room = new ArrayList<>();
-//        try {
-//            cn = DatabaseConnection.makeConnection();
-//
-//            String sql = "SELECT *\n"
-//                    + "FROM rooms\n"
-//                    + "WHERE hostel_id =" + indexValue + ";";
-//            PreparedStatement pst = cn.prepareStatement(sql);
-//            ResultSet rs = pst.executeQuery();
-//
-//            while (rs != null && rs.next()) {
-//                int room_id = rs.getInt("room_id");
-//                int hostel_id = rs.getInt("hostel_id");
-//                String name = rs.getString("name");
-//                String room_slug = rs.getString("room_slug");
-//                int max_contract = rs.getInt("max_contract");
-//                room.add(new Rooms(room_id, hostel_id, name, room_slug, max_contract));
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            if (cn != null) {
-//                try {
-//                    cn.close();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-//        return room;
-//    }
-//
-//    public static Rooms getRooms(String index, String indexValue) {
-//        Connection cn = null;
-//        Rooms room = null;
-//        try {
-//            cn = DatabaseConnection.makeConnection();
-//            if (cn != null) {
-////                String columns = "";
-////                for (int i = 0; i < indexNames.length; i++) {
-////                    if (i == 0) {
-////                        columns = indexNames[i];
-////                    } else {
-////                        columns = columns + "," + indexNames[i];
-////                    }
-////                }
-//                String sql = "SELECT* \n"
-//                        + "FROM rooms\n"
-//                        + "WHERE " + index + "= ?";
-//                PreparedStatement pst = cn.prepareStatement(sql);
-//                pst.setString(1, indexValue);
-//                //pst.setString(2, password);
-//                ResultSet rs = pst.executeQuery();
-//
-//                if (rs != null && rs.next()) {
-//
-//                    int room_id = rs.getInt("room_id");
-//                    int hostel_id = rs.getInt("hostel_id");
-//                    String name = rs.getString("name");
-//                    String room_slug = rs.getString("room_slug");
-//                    int max_contract = rs.getInt("max_contract");
-//                    room = new Rooms(room_id, hostel_id, name, room_slug, max_contract);
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            if (cn != null) {
-//                try {
-//                    cn.close();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-//        return room;
-//    }
-
-//    public boolean addRooms(String hostel_id , String owner_id, String city, String distrinct, String ward, String street, String name, String hostel_slug) {
-//        
-//        Connection cn = null;
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            cn = DatabaseConnection.makeConnection();
-//            if (cn != null) {
-//                String sql = "INSERT INTO hostels( hostel_id, owner_id, city, distrinct, ward, street, name, hostel_slug)\n"
-//                        + "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?);";
-//                PreparedStatement pst = cn.prepareStatement(sql);
-//                pst.setString(1, hostel_id);
-//                pst.setString(2, owner_id);
-//                pst.setString(3, city);
-//                pst.setString(4, distrinct);
-//                pst.setString(5, ward);
-//                pst.setString(6, street);
-//                pst.setString(7, name);
-//                pst.setString(8, hostel_slug);
-//                int affectedCol = pst.executeUpdate();
-//                if (affectedCol == 1) {
-//                    System.out.println("Insert successfully");
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//        return false;
-////    }
-//    public static void main(String[] args) throws Exception {
-//
-//        List<Rooms> listRooms = getAllListRoom("1");
-//        Rooms ro = new Rooms();
-//        ro = getRooms("hostel_id", "1");
-//        System.out.println(listRooms);
-//        System.out.println(ro);
-//    }
-
     @Override
     public boolean add(Rooms room) {
         Connection cn = null;
         try {
-
             cn = DatabaseConnection.makeConnection();
             if (cn != null) {
                 String sql = "INSERT INTO Rooms(hostel_id, name, room_slug, max_contract)\n"
@@ -155,9 +33,23 @@ public class RoomsDAO implements DAOInterface<Rooms> {
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setInt(1, room.getHostel_id());
                 pst.setString(2, room.getName());
-                pst.setString(3, room.getRoom_slug());
+                
+                String slug=SlugGenerator.generateSlug(room.getName());
+                if(!getList("room_slug", slug).isEmpty()){
+                    int i=1;
+                    while(true){
+                        if(!getList("room_slug", slug+"-"+i).isEmpty()){
+                            i=i+1;
+                        }
+                        else{
+                            slug=slug+"-"+i;
+                            break;
+                        }
+                    }
+                }                              
+                pst.setString(3, slug);
                 pst.setInt(4, room.getMax_contract());
-
+                
                 int affectedCol = pst.executeUpdate();
                 if (affectedCol == 1) {
                     System.out.println("Insert successfully");
