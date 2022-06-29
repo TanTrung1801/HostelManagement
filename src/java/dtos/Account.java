@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dtos;
 
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-/**
- *
- * @author lekha
- */
 public class Account implements Serializable{
     private int accountId;
     private String username;
@@ -29,8 +20,6 @@ public class Account implements Serializable{
     private Timestamp createdAt;
 
     public Account() {
-        this.role = 0;
-        this.status = 1;
     }
 
     public Account(String username, String hashedPassword, int role, String firstname, String lastname, String email, String phone, String idCardNumber, int status, Date dateOfBirth){

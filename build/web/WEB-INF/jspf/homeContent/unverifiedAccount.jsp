@@ -1,6 +1,6 @@
 <%-- 
     Document   : unverifiedAccount
-    Created on : Jun 16, 2022, 3:45:59 PM
+    Created on : Jun 23, 2022, 10:28:51 PM
     Author     : lekha
 --%>
 
@@ -21,4 +21,3 @@
         </form>
     </c:otherwise>
 </c:choose>
-

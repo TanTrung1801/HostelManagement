@@ -1,6 +1,6 @@
 <%-- 
     Document   : home
-    Created on : Jun 16, 2022, 3:58:17 AM
+    Created on : Jun 23, 2022, 9:11:50 PM
     Author     : lekha
 --%>
 
@@ -111,43 +111,16 @@
     </div>
 </header>
 
-<div id="homeContent">
+<div id="homeContent" class="main">
     <c:choose>
-        <c:when test ="${(homeContent eq 'homeDefault') or (homeContent eq 'unverifiedAccount')}">
-            <jsp:include page="/WEB-INF/jspf/homeContent/${homeContent}.jsp"/>
+        <c:when test ="${hasTools}">         
+            <jsp:include page="/WEB-INF/jspf/homeContent/tools.jsp"/>           
+            <jsp:include page="/WEB-INF/jspf/homeContent/details.jsp"/>
         </c:when>
         <c:otherwise>
-            <div class="main">
-                <jsp:include page="/WEB-INF/jspf/homeContent/${homeContent}Tools.jsp"/>
-
-                <div id="content">
-                    <div class="row">
-                        <ol class="col-12 breadcrumb">
-                            <c:set var='linkName' value="${fn:split(requestScope.processingPath,'/')}" scope='page'/>
-
-                            <c:forEach begin='0' end="${fn:length(linkName)-2}" var='i'>
-                                <c:set var='linkPath' value='${linkName[0]}' scope='page'/>
-                                <c:forEach begin='1' end='${i}' var='j'>
-                                    <c:set var='linkPath' value='${linkPath}/${linkName[j]}' scope='page'/>
-                                </c:forEach>
-
-                                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/${linkPath}">${fn:toUpperCase(fn:substring(linkName[i], 0, 1))}${fn:toLowerCase(fn:substring(linkName[i], 1,fn:length(linkName[i])))}</a></li>                               
-                                </c:forEach>
-
-                            <li class="breadcrumb-item active">${fn:toUpperCase(fn:substring(linkName[fn:length(linkName)-1], 0, 1))}${fn:toLowerCase(fn:substring(linkName[fn:length(linkName)-1], 1,fn:length(linkName[fn:length(linkName)-1])))}</li>
-                        </ol>
-                        <div class="col-12">
-                            <h3>${fn:toUpperCase(fn:substring(linkName[fn:length(linkName)-1], 0, 1))}${fn:toLowerCase(fn:substring(linkName[fn:length(linkName)-1], 1,fn:length(linkName[fn:length(linkName)-1])))}</h3>
-                            <!--<h3>${linkName[fn:length(linkName)-1]}</h3>-->
-                        </div>
-                    </div>
-
-                    <jsp:include page="/WEB-INF/jspf/homeContent/${homeContent}.jsp"/>
-                </div>         
-            </div>
+            <jsp:include page="/WEB-INF/jspf/homeContent/${homeContent}"/>
         </c:otherwise>
     </c:choose>
-
 </div>
 
 <footer class="footer">
@@ -161,7 +134,7 @@
                 <h3>Keep in touch</h3>
                 <ul class="list-unstyled contact-links">
                     <li><i class="fa fa-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@agencyperfect.com">Hostelmanagementse1633@gmail.com</a></li>
+                            href="mailto:Hostelmanagementse1633@gmail.com">Hostelmanagementse1633@gmail.com</a></li>
                     <li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+37400800000">+374 (00) 80 00 00
                         </a></li>
                     <li><i class="fa fa-fax" aria-hidden="true"></i><a href="+37400900000">+374 (00) 90 00 00</a>
@@ -183,3 +156,4 @@
         </div>
     </div>
 </footer>
+

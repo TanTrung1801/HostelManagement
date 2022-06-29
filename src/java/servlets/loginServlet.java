@@ -37,9 +37,8 @@ public class loginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            HttpSession session = request.getSession();
-            String contextPath = (String)request.getAttribute("contextPath");
+          HttpSession session = request.getSession();
+            String contextPath = request.getContextPath();
             
             String indexValue = request.getParameter("indexValue");
             String password   = request.getParameter("password");     
@@ -67,7 +66,7 @@ public class loginServlet extends HttpServlet {
             }
             catch (IOException | NoSuchAlgorithmException | InvalidKeySpecException | ServletException e){
                 e.printStackTrace();
-            }
+            }           
         }
     }
 

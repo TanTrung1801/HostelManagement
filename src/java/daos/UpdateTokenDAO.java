@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package daos;
 
 import dtos.UpdateToken;
@@ -15,13 +10,8 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import utilities.DatabaseConnection;
-import utilities.SlugGenerator;
 
-/**
- *
- * @author lekha
- */
-public class UpdateTokenDAO implements DAOInterface<UpdateToken>, Serializable {
+public class UpdateTokenDAO implements DAO<UpdateToken>, Serializable {
 
     @Override
     public boolean add(UpdateToken updateToken) {
@@ -128,6 +118,11 @@ public class UpdateTokenDAO implements DAOInterface<UpdateToken>, Serializable {
 
     @Override
     public List<UpdateToken> getList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<UpdateToken> getList(String column, String value) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

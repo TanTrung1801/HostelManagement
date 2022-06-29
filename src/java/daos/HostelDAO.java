@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package daos;
 
 import dtos.Hostel;
@@ -14,13 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import utilities.DatabaseConnection;
-import utilities.SlugGenerator;
+import utilities.StringUtil;
 
-/**
- *
- * @author lekha
- */
-public class HostelDAO implements DAOInterface<Hostel>, Serializable {
+public class HostelDAO implements DAO<Hostel>, Serializable {
 
     @Override
     public boolean add(Hostel hostel) {
@@ -38,7 +29,7 @@ public class HostelDAO implements DAOInterface<Hostel>, Serializable {
                 pst.setString(5, hostel.getStreet());
                 pst.setString(6, hostel.getName());
                 
-                String slug=SlugGenerator.generateSlug(hostel.getName());
+                String slug=StringUtil.generateSlug(hostel.getName());
                 if(!getList("hostel_slug", slug).isEmpty()){
                     int i=1;
                     while(true){
@@ -88,9 +79,10 @@ public class HostelDAO implements DAOInterface<Hostel>, Serializable {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
     public List<Hostel> getList(String column, String value) {
         Connection cn = null;
-        List<Hostel> host = new ArrayList<>();
+        List<Hostel> list = new ArrayList<>();
         try {
             cn = DatabaseConnection.makeConnection();
 
@@ -111,7 +103,7 @@ public class HostelDAO implements DAOInterface<Hostel>, Serializable {
                 String name = rs.getString("name");
                 String hostel_slug = rs.getString("hostel_slug");
                 
-                host.add(new Hostel(hostel_id, owner_id, city, district, ward, street, name, hostel_slug));
+                list.add(new Hostel(hostel_id, owner_id, city, district, ward, street, name, hostel_slug));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -124,6 +116,6 @@ public class HostelDAO implements DAOInterface<Hostel>, Serializable {
                 }
             }
         }
-        return host;
+        return list;
     }
 }

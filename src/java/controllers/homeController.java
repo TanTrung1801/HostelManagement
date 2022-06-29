@@ -35,7 +35,7 @@ public class homeController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+           
             HttpSession session = request.getSession();
             
             String contextPath = request.getContextPath();
@@ -58,14 +58,15 @@ public class homeController extends HttpServlet {
             AccountDAO dao = new AccountDAO();
             Account acc = dao.getOne("account_id", id + "");
             System.out.println(acc);
+            
             switch (acc.getStatus()) {
                 case 0:
-                    request.setAttribute("homeContent", "accountDisabled");
+                    request.setAttribute("homeContent", "accountDisabled.jsp");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     return;
 
                 case 1:
-                    request.setAttribute("homeContent", "unverifiedAccount");
+                    request.setAttribute("homeContent", "unverifiedAccount.jsp");
                     //request.getRequestDispatcher("index.jsp").forward(request, response);
                     System.out.println(Colors.YELLOW + "homeController forward to unverifiedAccountController" + Colors.RESET);
                     request.getRequestDispatcher("unverifiedAccountController").forward(request, response);
@@ -73,18 +74,46 @@ public class homeController extends HttpServlet {
 
                 case 2:
                     if (acc.getRole() == 0) {
-                        if (splitter.length >= 3) {
-                            System.out.println(Colors.YELLOW + "homeController forward to "+splitter[2]+"Controller" + Colors.RESET);
-                            request.getRequestDispatcher(splitter[2] + "Controller").forward(request, response);
-                            return;
+                        if (splitter.length >= 3){
+                            if (splitter[2].equals("admin")){
+                                response.setStatus(403);
+                                return;
+                            }
+                            else{
+                                if(splitter[2].equals("owning") || splitter[2].equals("managing")){
+                                    System.out.println(Colors.YELLOW + "homeController forward to vendorController" + Colors.RESET);
+                                    request.getRequestDispatcher("vendorController").forward(request, response);
+                                    return;
+                                }
+                                if(splitter[2].equals("renting")){
+                                    System.out.println(Colors.YELLOW + "homeController forward to tenantController" + Colors.RESET);
+                                    request.getRequestDispatcher("tenantController").forward(request, response);
+                                    return;
+                                }
+                                System.out.println(Colors.YELLOW + "homeController forward to "+splitter[2]+"Controller" + Colors.RESET);
+                                request.getRequestDispatcher(splitter[2] + "Controller").forward(request, response);
+                                return;
+                            }
                         } else {
-                            request.setAttribute("homeContent", "homeDefault");
+                            request.setAttribute("homeContent", "default.jsp");
                             request.getRequestDispatcher("index.jsp").forward(request, response);
                             return;
                         }
                     } else {
-                        response.sendRedirect(contextPath + "/admin");
-                        return;
+                        if (splitter.length >= 3){
+                            if (splitter[2].equals("admin")){
+                                System.out.println(Colors.YELLOW + "homeController forward to adminController" + Colors.RESET);
+                                request.getRequestDispatcher("adminController").forward(request, response);
+                                return;
+                            }else{
+                                response.setStatus(403);
+                                return;
+                            }
+                        }
+                        else{
+                            response.sendRedirect(contextPath + "/admin");
+                            return;
+                        }
                     }
             } 
         }

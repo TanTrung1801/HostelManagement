@@ -42,72 +42,76 @@ public class updateProfileServlet extends HttpServlet {
             String txtDateOfBirth = request.getParameter("dateOfBirth");
 
             int accountId = (Integer) request.getSession().getAttribute("loginId");
-            
+
             boolean check = true;
             AccountDAO dao = new AccountDAO();
             Account acc = null;
 
-            if(firstname != null && lastname != null && phone != null && txtDateOfBirth != null){
+            if (firstname != null && lastname != null && phone != null && txtDateOfBirth != null) {
                 if (!phone.matches("[0-9]{10,10}") || phone.length() != 10) {
                     check = false;
                     request.setAttribute("ERROR_PHONE", "phone must only contains number with length of 10");
                 }
-                
+
                 acc = dao.getOne("phone", phone);
                 if (acc != null) {
-                    if(acc.getAccountId()!=accountId){
+                    if (acc.getAccountId() != accountId) {
                         check = false;
                         request.setAttribute("ERROR_PHONE", "this phone number is bound to another account!!");
                     }
                 }
-            }
-            else{
+            } else {
                 check = false;
                 request.setAttribute("ERROR", "please enter all required fields!!");
             }
-            
-            if(check){
+
+            if (check) {
                 Date dateOfBirth = Date.valueOf(txtDateOfBirth);
-                
-                acc = dao.getOne("account_id", accountId+"");
+
+                acc = dao.getOne("account_id", accountId + "");
 
                 HashMap<String, String> columnValuePair = new HashMap<String, String>();
-                
-                if(!acc.getFirstname().equals(firstname)) columnValuePair.put("first_name", firstname);
-                if(!acc.getLastname().equals(lastname)) columnValuePair.put("last_name", lastname);
-                if(!acc.getPhone().equals(phone)) columnValuePair.put("phone", phone);
-                if(!acc.getDateOfBirth().equals(dateOfBirth)) columnValuePair.put("date_of_birth", txtDateOfBirth);
-                
-                if(!columnValuePair.isEmpty()){
+
+                if (!acc.getFirstname().equals(firstname)) {
+                    columnValuePair.put("first_name", firstname);
+                }
+                if (!acc.getLastname().equals(lastname)) {
+                    columnValuePair.put("last_name", lastname);
+                }
+                if (!acc.getPhone().equals(phone)) {
+                    columnValuePair.put("phone", phone);
+                }
+                if (!acc.getDateOfBirth().equals(dateOfBirth)) {
+                    columnValuePair.put("date_of_birth", txtDateOfBirth);
+                }
+
+                if (!columnValuePair.isEmpty()) {
                     if (dao.update(accountId, columnValuePair)) {
-                        if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {                         
-                            request.getRequestDispatcher("/WEB-INF/jspf/profileContent/profileDetails.jsp").include(request, response);
+                        if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
+                            request.getRequestDispatcher("/WEB-INF/jspf/homeDetails/profile/view-profileDetails.jsp").include(request, response);
                             return;
-                        }
-                        else{
-                            request.setAttribute("pageTitle", "Profile");
+                        } else {
+                            request.setAttribute("pageTitle", "View Profile");
                             request.setAttribute("profileContent", "view");
                             request.getRequestDispatcher("index.jsp").forward(request, response);
                             return;
                         }
+                    } else {
+                        request.setAttribute("ERROR", "Update failed!!");
                     }
-                    else{
-                        request.setAttribute("ERROR", "Update failed!!");                
-                    }
-                }
-                else{
+                } else {
                     if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
-                        request.getRequestDispatcher("/WEB-INF/jspf/profileContent/profileDetails.jsp").include(request, response);
+                        request.getRequestDispatcher("/WEB-INF/jspf/homeDetails/profile/view-profileDetails.jsp").include(request, response);
                         return;
                     }
                 }
             }
-            
+
             if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
-                request.getRequestDispatcher("/WEB-INF/jspf/profileContent/updateForm.jsp").include(request, response);
+                request.getRequestDispatcher("/WEB-INF/jspf/homeDetails/profile/view-updateForm.jsp").include(request, response);
                 return;
             } else {
-                request.setAttribute("pageTitle", "Profile");
+                request.setAttribute("pageTitle", "View Profile");
                 request.setAttribute("profileContent", "view");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
                 return;

@@ -11,7 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import utilities.Colors;
 
 /**
@@ -33,7 +32,16 @@ public class registerController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet registerController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet registerController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -49,9 +57,8 @@ public class registerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         request.setAttribute("pageTitle", "Register");
-        request.setAttribute("mainContent", "registerForm.jsp");
+        request.setAttribute("mainContent", "register.jsp");
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
@@ -66,7 +73,7 @@ public class registerController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println(Colors.YELLOW + "loginController forward to loginServlet" + Colors.RESET);
+        System.out.println(Colors.YELLOW + "registerController forward to registerServlet" + Colors.RESET);
         request.getRequestDispatcher("registerServlet").forward(request, response);
     }
 

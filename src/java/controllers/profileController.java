@@ -33,8 +33,16 @@ public class profileController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-       
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet profileController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet profileController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -53,11 +61,11 @@ public class profileController extends HttpServlet {
         if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
             switch (request.getParameter("action")){
                 case "getUpdateForm":
-                    request.getRequestDispatcher("/WEB-INF/jspf/profileContent/updateForm.jsp").include(request, response);
+                    request.getRequestDispatcher("/WEB-INF/jspf/homeDetails/profile/view-updateForm.jsp").include(request, response);
                     return;
                     
                 case "getView":
-                    request.getRequestDispatcher("/WEB-INF/jspf/profileContent/profileDetails.jsp").include(request, response);
+                    request.getRequestDispatcher("/WEB-INF/jspf/homeDetails/profile/view-profileDetails.jsp").include(request, response);
                     return;
             }
         }
@@ -69,28 +77,32 @@ public class profileController extends HttpServlet {
             String[] splitter = processingPath.split("/");
 
             if (splitter.length > 3) {
-                request.setAttribute("homeContent", "profile");
+                request.setAttribute("hasTools", true);
+                request.setAttribute("homeTools", "profileTools.jsp");
 
                 switch(splitter[3]){
                     case "view":
-                        request.setAttribute("profileContent", "view");
+                        request.setAttribute("pageTitle", "View Profile");
+                        request.setAttribute("homeDetails", "profile/view.jsp");
                         String action = request.getParameter("action");
                         if (action != null){
                             switch (request.getParameter("action")){
                                 case "getUpdateForm":
-                                    request.setAttribute("viewContent", "updateForm");
+                                    request.setAttribute("viewContent", "view-updateForm.jsp");
                                     break;
 
                                 case "getView":
-                                    request.setAttribute("viewContent", "profileDetails");
+                                    request.setAttribute("viewContent", "view-profileDetails.jsp");
                                     break;
                             }        
                         }
-                        else request.setAttribute("viewContent", "profileDetails");
+                        else request.setAttribute("viewContent", "view-profileDetails.jsp");
                         break;
 
                     case "change-password":
-                        request.setAttribute("profileContent", "changePasswordForm");
+                        request.setAttribute("pageTitle", "Change Password");
+                        request.setAttribute("homeDetails", "profile/changePassword.jsp");
+                        request.setAttribute("changePasswordContent", "changePassword-form.jsp");
                         break;
                 }
 
@@ -113,6 +125,7 @@ public class profileController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         HttpSession session = request.getSession();
         String processingPath = (String) request.getAttribute("processingPath");
         String contextPath = request.getContextPath();

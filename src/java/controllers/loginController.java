@@ -11,7 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import utilities.Colors;
 
 /**
@@ -33,7 +32,16 @@ public class loginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet loginController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet loginController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -49,9 +57,8 @@ public class loginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         request.setAttribute("pageTitle", "Login");
-        request.setAttribute("mainContent", "loginForm.jsp");
+        request.setAttribute("mainContent", "login.jsp");
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
@@ -66,11 +73,10 @@ public class loginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         request.setAttribute("pageTitle", "Login");
         request.setAttribute("mainContent", "loginForm.jsp");
         System.out.println(Colors.YELLOW + "loginController forward to loginServlet" + Colors.RESET);
-        request.getRequestDispatcher("loginServlet").forward(request, response);     
+        request.getRequestDispatcher("loginServlet").forward(request, response);  
     }
 
     /**

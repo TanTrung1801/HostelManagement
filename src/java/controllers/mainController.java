@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Arrays;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -126,60 +127,63 @@ public class mainController implements Filter {
             System.out.println("processing path: " + processingPath);
             
             if (!uri.contains("/css") && !uri.contains("/fonts") && !uri.contains("/icons") && !uri.contains("/images") && !uri.contains("/js") && !uri.contains("/vendor") && !uri.contains("/img") && !uri.contains("/node_modules")) {
-                
+                // split processing path to forward
                 String[] splitter = processingPath.split("/");
-
-                if (splitter.length < 2) {
-                    if (session.getAttribute("loginId") == null) {
-                        res.sendRedirect(contextPath+"/login");
-                        return;
-                    } else {
+                
+                // authentication
+                boolean authenticated;
+                if(session.getAttribute("loginId")==null){
+                    authenticated = false;
+                }
+                else authenticated = true;
+                
+                //check for url's length
+                if(splitter.length ==0){
+                    if(authenticated){
                         res.sendRedirect(contextPath+"/home");
                         return;
+                    }else{
+                        res.sendRedirect(contextPath+"/login");
                     }
-                } else {
-                    request.setAttribute("processingPath", processingPath);
-                    
-                    if(splitter[1].equals("logout")){
-                        System.out.println(Colors.YELLOW+"mainController forward to logoutServlet"+Colors.RESET);
-                        request.getRequestDispatcher("logoutServlet").forward(request, response);
-                        return;
+                }
+                else{
+                    // classify target page
+                    //     0 - public pages
+                    //     1 - guest-only pages
+                    //     2 - user-only pages
+                    String targetPage = splitter[1];
+                    int targetPageClassification=0;
+
+                    String[] guestOnly={"login", "register"};
+                    String[] userOnly={"home", "logout"};
+                    if(Arrays.stream(guestOnly).anyMatch(targetPage::equals)){
+                        targetPageClassification=1;
                     }
-                    
-                    if(splitter[1].equals("verify")){
-                        System.out.println(Colors.YELLOW+"mainController forward to verifyEmailServlet"+Colors.RESET);
-                        request.getRequestDispatcher("verifyEmailServlet").forward(request, response);
-                        return;
+                    if(Arrays.stream(userOnly).anyMatch(targetPage::equals)){
+                        targetPageClassification=2;
                     }
-                    
-                    if(splitter[1].equals("home")){
-                        if(session.getAttribute("loginId")==null){
-                            res.sendRedirect(contextPath+"/login");
-                            return;
-                        }
-                        else{
-                            System.out.println(Colors.YELLOW+"mainController forward to homeController"+Colors.RESET);
-                            request.getRequestDispatcher("/homeController").forward(request, response);
-                            System.out.println("asdasd");
+
+                    //control
+                    if(authenticated){
+                        //if logged in and try to go to guest-only page, throw status 403 forbidden
+                        if (targetPageClassification==1) {
+                            res.setStatus(403);
                             return;
                         }
                     }
                     else{
-                        if(session.getAttribute("loginId")!=null){
-                            res.sendRedirect(contextPath+"/home");
+                        //if not logged in and try to go to user-only page, force login
+                        if( targetPageClassification==2){
+                            res.sendRedirect(contextPath+"/login");
                             return;
                         }
-                        else{
-                            System.out.println(Colors.YELLOW+"mainController forward to guestController"+Colors.RESET);
-                            request.getRequestDispatcher("/guestController").forward(request, response);
-                            System.out.println("jaksd");
-                            return;
-                        }
-                    }                  
+                    }
+                    request.setAttribute("processingPath", processingPath);
+                    System.out.println(Colors.YELLOW + "mainController forward to "+targetPage+"Controller" + Colors.RESET);
+                    request.getRequestDispatcher("/"+targetPage+"Controller").forward(request, response);
+                    return;
                 }
-            }           
-            else chain.doFilter(request, response);
-
+            }else chain.doFilter(request, response);
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then

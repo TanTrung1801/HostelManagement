@@ -60,9 +60,10 @@ public class changePasswordServlet extends HttpServlet {
                                     columnValuePair.put("hashed_password", PasswordHash.createHash(newPass));
                                     if (dao.update(accountId, columnValuePair)) {
                                         if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
-                                            request.getRequestDispatcher("/WEB-INF/jspf/profileContent/changePasswordSucceed.jsp").forward(request, response);
+                                            request.getRequestDispatcher("/WEB-INF/jspf/homeDetails/profile/changePassword-succeed.jsp").forward(request, response);
                                         } else {
-                                            request.setAttribute("profileContent", "changePasswordSucceed");
+                                            request.setAttribute("profileContent", "changePassword-succeed.jsp");
+                                            request.setAttribute("changePasswordContent", "changePassword-succeed.jsp");
                                             request.getRequestDispatcher("/index.jsp").forward(request, response);
                                         }
                                         return;
