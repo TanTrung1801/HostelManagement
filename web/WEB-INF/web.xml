@@ -52,6 +52,10 @@
         <servlet-name>hostelController</servlet-name>
         <servlet-class>controllers.hostelController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>roomController</servlet-name>
+        <servlet-class>controllers.roomController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/loginController</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>hostelController</servlet-name>
         <url-pattern>/hostelController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>roomController</servlet-name>
+        <url-pattern>/roomController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

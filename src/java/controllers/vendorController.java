@@ -91,7 +91,7 @@ public class vendorController extends HttpServlet {
             request.setAttribute("rights", rights);
             switch (splitter[3]) {
                 case "hostels":
-                    System.out.println(Colors.YELLOW + "owningController forward to hostelController" + Colors.RESET);
+                    System.out.println(Colors.YELLOW + "vendorController forward to hostelController" + Colors.RESET);
                     request.getRequestDispatcher("hostelController").forward(request, response);
                     return;
 

@@ -75,8 +75,8 @@ public class hostelController extends HttpServlet {
             //request.setAttribute("rights", rights);
             
             HostelDAO hostelDao = new HostelDAO();
-            //Hostel hostel = hostelDao.getOne("hostel_slug", splitter[4]);
-            if(hostelDao.getList("hostel_slug", splitter[4]).isEmpty()){
+            Hostel hostel = hostelDao.getOne("hostel_slug", splitter[4]);
+            if(hostel==null){
                 response.setStatus(404);
                 return;
             }
@@ -86,6 +86,12 @@ public class hostelController extends HttpServlet {
             }
             
             switch (splitter[5]) {
+                case "rooms":
+                    System.out.println(Colors.YELLOW + "hostelController forward to roomController" + Colors.RESET);
+                    request.setAttribute("hostelId", hostel.getHostelId());
+                    request.getRequestDispatcher("roomController").forward(request, response);
+                    return;
+                
                 case "hostel-details":
                     //System.out.println(Colors.YELLOW + "owningController forward to hostelController" + Colors.RESET);
                     request.setAttribute("pageTitle", "Hostel Details");
@@ -94,15 +100,15 @@ public class hostelController extends HttpServlet {
                     return;
 
                 case "room-list":
-                    request.setAttribute("pageTitle", "Hostel List");
-                    request.setAttribute("homeDetails", "vendor/hostelList.jsp");
+                    request.setAttribute("pageTitle", "Room List");
+                    request.setAttribute("homeDetails", "hostel/roomList.jsp");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     return;
 
-                case "create-hostel":
-                    request.setAttribute("pageTitle", "Create Hostel");
-                    request.setAttribute("homeDetails", "vendor/createHostel.jsp");
-                    request.setAttribute("createHostelContent", "createHostel-form.jsp");
+                case "create-room":
+                    request.setAttribute("pageTitle", "Create Room");
+                    request.setAttribute("homeDetails", "hostel/createRoom.jsp");
+                    //request.setAttribute("createHostelContent", "createHostel-form.jsp");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     return;
             }

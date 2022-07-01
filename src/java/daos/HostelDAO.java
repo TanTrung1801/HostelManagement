@@ -71,7 +71,43 @@ public class HostelDAO implements DAO<Hostel>, Serializable {
 
     @Override
     public Hostel getOne(String column, String value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection cn = null;
+        Hostel hostel = null;
+        try {
+            cn = DatabaseConnection.makeConnection();
+            if (cn != null) {
+                String sql = "SELECT *\n"
+                        + "FROM Hostels\n"
+                        + "WHERE " + column + " = ?";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, value);
+                ResultSet rs = pst.executeQuery();
+
+                if (rs != null && rs.next()) {
+                    int hostel_id = rs.getInt("hostel_id");
+                    int owner_id = rs.getInt("owner_id");
+                    String city = rs.getString("city");
+                    String district = rs.getString("district");
+                    String ward = rs.getString("ward");
+                    String street = rs.getString("street");
+                    String name = rs.getString("name");
+                    String hostel_slug = rs.getString("hostel_slug");
+
+                    hostel = new Hostel(hostel_id, owner_id, city, district, ward, street, name, hostel_slug);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return hostel;
     }
 
     @Override

@@ -5,7 +5,9 @@
  */
 package utilities;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  *
@@ -13,7 +15,20 @@ import java.util.Arrays;
  */
 public class test {
     public static void main(String[] args){
-        System.out.println(StringUtil.generateSlug("tôi tên             là LÊ %^&#*&!(*#@NGU@*&^^@&*(*!&*^@$(YÊN                        KH&#^!ANG đ&#^$^#*@ó"));
-        System.out.println(StringUtil.removeAccent("Đ đ"));
+        HashMap<String, String> columnValuePair = new HashMap();
+        columnValuePair.put("room_id", "131231");
+        columnValuePair.put("name", "oiaudhuis");
+        columnValuePair.put("asdasd", "oiaudhuis");
+        
+        String where = "";
+                    ArrayList<String> whereValues = new ArrayList();
+
+                    for (String column : columnValuePair.keySet()) {
+                        where = where + "  " + column + "=?";
+                        whereValues.add(columnValuePair.get(column));
+                    }
+                    where = where.trim().replace("  ", " AND ");
+                    
+                    System.out.println(where);
     }
 }
