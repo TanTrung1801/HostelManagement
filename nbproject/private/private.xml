@@ -3,58 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/dtos/PermissionOfManager.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/daos/RoomsDAO.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/servlets/changePasswordServlet.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/mainContent/registerForm.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/homeContent/homeDefault.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/servlets/addContractServlet.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/servlets/verifyEmailServlet.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/dtos/Rooms.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/web.xml</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/servlets/createRoomServlet.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/homeContent/unverifiedAccount.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/utilities/DatabaseConnection.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/owningContent/view.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/profileContent/profileDetails.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/servlets/createHostelServlet.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/homeContent/owning.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/controllers/profileController.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/daos/UpdateTokenDAO.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/homeContent/profileTools.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/dtos/Hostel.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/daos/HostelDAO.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/dtos/Managers.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/daos/AccountDAO.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/daos/DAOInterface.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/dtos/Contracts.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/profileContent/updateForm.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/owningContent/createHostel.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/servlets/loginServlet.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/profileContent/changePasswordForm.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/utilities/SlugGenerator.java</file>
             <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/controllers/owningController.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/servlets/logoutServlet.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/controllers/guestController.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/controllers/mainController.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/profileContent/view.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/controllers/unverifiedAccountController.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/controllers/registerController.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/index.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/dtos/Account.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/controllers/loginController.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/homeContent/profile.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/owningContent/createRoom.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/controllers/homeController.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/mainContent/loginForm.jsp</file>
             <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/owningContent/hostel.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/dtos/test.java</file>
+            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/daos/RoomsDAO.java</file>
             <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/owningContent/room.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/homeContent/owningTools.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/profileContent/changePasswordSucceed.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/mainContent/verifyEmail.jsp</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/dtos/Permission.java</file>
-            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/mainContent/home.jsp</file>
+            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/servlets/addContractServlet.java</file>
+            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/dtos/Hostel.java</file>
+            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/profileContent/view.jsp</file>
+            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/daos/DAOInterface.java</file>
+            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/servlets/createRoomServlet.java</file>
+            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/controllers/loginController.java</file>
+            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/owningContent/createRoom.jsp</file>
+            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/owningContent/view.jsp</file>
+            <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/controllers/homeController.java</file>
+            <file>file:/D:/ProgramData/Project/HostelManagementGIT/web/WEB-INF/jspf/profileContent/profileDetails.jsp</file>
             <file>file:/D:/ProgramData/Project/HostelManagementGIT/src/java/daos/ContractsDAO.java</file>
         </group>
     </open-files>

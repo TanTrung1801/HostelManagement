@@ -22,7 +22,7 @@
                         <tr>
                             <td>${room.name}</td>
                             <td>${room.max_contract}</td>
-                            <td> <a onclick="window.location = '${pageContext.request.contextPath}/home/owning/hostels/${hostel.hostelSlug}/room/${room.room_slug}'" class="btn btn-green " >Detail</a></td>
+                            <td> <a onclick="window.location = '${pageContext.request.contextPath}/home/owning/hostels/${requestScope.hostelSlug}/room/${room.room_slug}'" class="btn btn-green " >Detail</a></td>
                         </tr>
                     </c:forEach>
                 </tbody>
