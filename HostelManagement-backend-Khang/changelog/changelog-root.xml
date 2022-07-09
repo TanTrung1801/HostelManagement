@@ -1,0 +1,376 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <changeSet author="lekha (generated)" id="1656674279256-1">
+        <createTable tableName="accounts">
+            <column autoIncrement="true" name="account_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="hashed_password" type="VARCHAR(110)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="role" remarks="0 - user&#13;&#10;1 - admin" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="full_name" type="VARCHAR(120)"/>
+            <column name="email" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="phone" type="VARCHAR(22)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="id_card_number" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column defaultValueNumeric="1" name="account_status" remarks="0 - disabled&#13;&#10;1 - unverified&#13;&#10;2 - verified" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_of_birth" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="current_timestamp()" name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-2">
+        <createTable tableName="contracts">
+            <column autoIncrement="true" name="contract_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="room_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="room_price" type="DECIMAL(19, 4)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="contract_status" remarks="0 - inactive&#13;&#10;1 - active" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deposit" type="DECIMAL(19, 4)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="current_timestamp()" name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-3">
+        <createTable tableName="feedbacks">
+            <column autoIncrement="true" name="feedback_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="hostel_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="NULL" name="room_id" type="INT"/>
+            <column name="client_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="current_timestamp()" name="send_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-4">
+        <createTable tableName="hostels">
+            <column autoIncrement="true" name="hostel_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="owner_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="district" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ward" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="TEXT"/>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hostel_slug" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-5">
+        <createTable tableName="managers">
+            <column autoIncrement="true" name="manager_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="account_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hostel_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-6">
+        <createTable tableName="payment_details">
+            <column autoIncrement="true" name="detail_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="payment_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DECIMAL(19, 4)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-7">
+        <createTable tableName="payments">
+            <column autoIncrement="true" name="payment_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="contract_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sender_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="receiver_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="current_timestamp()" name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="NULL" name="paid_at" type="datetime"/>
+            <column defaultValueNumeric="0" name="payment_status" remarks="0 - unpaid&#13;&#10;1 - paid" type="TINYINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-8">
+        <createTable tableName="permission_of_manager">
+            <column autoIncrement="true" name="pom_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="permission_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="manager_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-9">
+        <createTable tableName="permissions">
+            <column autoIncrement="true" name="permission_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-10">
+        <createTable tableName="rooms">
+            <column autoIncrement="true" name="room_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="hostel_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="room_slug" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_contract" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-11">
+        <createTable tableName="update_tokens">
+            <column name="token" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="account_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="current_timestamp()" name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time_out" remarks="in seconds" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="NULL" name="status" type="TINYINT"/>
+            <column name="type" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-12">
+        <addUniqueConstraint columnNames="account_id, hostel_id" constraintName="account_hostel_manager" tableName="managers"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-13">
+        <addUniqueConstraint columnNames="city, district, ward, street" constraintName="address" tableName="hostels"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-14">
+        <addUniqueConstraint columnNames="permission_id, manager_id" constraintName="permission_id" tableName="permission_of_manager"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-15">
+        <addUniqueConstraint columnNames="hostel_id, name" constraintName="unique_hostel_name_rooms" tableName="rooms"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-16">
+        <addUniqueConstraint columnNames="hostel_id, room_slug" constraintName="unique_hostel_slug_rooms" tableName="rooms"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-17">
+        <createIndex indexName="account_id" tableName="update_tokens">
+            <column name="account_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-18">
+        <createIndex indexName="fk_client_contract" tableName="contracts">
+            <column name="client_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-19">
+        <createIndex indexName="fk_client_feedback" tableName="feedbacks">
+            <column name="client_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-20">
+        <createIndex indexName="fk_contract_payment" tableName="payments">
+            <column name="contract_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-21">
+        <createIndex indexName="fk_hostel_feedback" tableName="feedbacks">
+            <column name="hostel_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-22">
+        <createIndex indexName="fk_hostel_manager" tableName="managers">
+            <column name="hostel_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-23">
+        <createIndex indexName="fk_hostel_room" tableName="rooms">
+            <column name="hostel_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-24">
+        <createIndex indexName="fk_manager_pom" tableName="permission_of_manager">
+            <column name="manager_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-25">
+        <createIndex indexName="fk_owner_hostel" tableName="hostels">
+            <column name="owner_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-26">
+        <createIndex indexName="fk_payment_payment_detail" tableName="payment_details">
+            <column name="payment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-27">
+        <createIndex indexName="fk_receiver_payment" tableName="payments">
+            <column name="receiver_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-28">
+        <createIndex indexName="fk_room_contract" tableName="contracts">
+            <column name="room_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-29">
+        <createIndex indexName="fk_room_feedback" tableName="feedbacks">
+            <column defaultValueComputed="NULL" name="room_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-30">
+        <createIndex indexName="fk_sender_payment" tableName="payments">
+            <column name="sender_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-31">
+        <addForeignKeyConstraint baseColumnNames="account_id" baseTableName="managers" constraintName="fk_account_manager" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="account_id" referencedTableName="accounts" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-32">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="contracts" constraintName="fk_client_contract" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="account_id" referencedTableName="accounts" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-33">
+        <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="feedbacks" constraintName="fk_client_feedback" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="account_id" referencedTableName="accounts" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-34">
+        <addForeignKeyConstraint baseColumnNames="contract_id" baseTableName="payments" constraintName="fk_contract_payment" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="contract_id" referencedTableName="contracts" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-35">
+        <addForeignKeyConstraint baseColumnNames="hostel_id" baseTableName="feedbacks" constraintName="fk_hostel_feedback" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="hostel_id" referencedTableName="hostels" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-36">
+        <addForeignKeyConstraint baseColumnNames="hostel_id" baseTableName="managers" constraintName="fk_hostel_manager" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="hostel_id" referencedTableName="hostels" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-37">
+        <addForeignKeyConstraint baseColumnNames="hostel_id" baseTableName="rooms" constraintName="fk_hostel_room" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="hostel_id" referencedTableName="hostels" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-38">
+        <addForeignKeyConstraint baseColumnNames="manager_id" baseTableName="permission_of_manager" constraintName="fk_manager_pom" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="manager_id" referencedTableName="managers" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-39">
+        <addForeignKeyConstraint baseColumnNames="owner_id" baseTableName="hostels" constraintName="fk_owner_hostel" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="account_id" referencedTableName="accounts" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-40">
+        <addForeignKeyConstraint baseColumnNames="payment_id" baseTableName="payment_details" constraintName="fk_payment_payment_detail" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="payment_id" referencedTableName="payments" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-41">
+        <addForeignKeyConstraint baseColumnNames="permission_id" baseTableName="permission_of_manager" constraintName="fk_permission_pom" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="permission_id" referencedTableName="permissions" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-42">
+        <addForeignKeyConstraint baseColumnNames="receiver_id" baseTableName="payments" constraintName="fk_receiver_payment" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="account_id" referencedTableName="accounts" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-43">
+        <addForeignKeyConstraint baseColumnNames="room_id" baseTableName="contracts" constraintName="fk_room_contract" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="room_id" referencedTableName="rooms" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-44">
+        <addForeignKeyConstraint baseColumnNames="room_id" baseTableName="feedbacks" constraintName="fk_room_feedback" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="room_id" referencedTableName="rooms" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-45">
+        <addForeignKeyConstraint baseColumnNames="sender_id" baseTableName="payments" constraintName="fk_sender_payment" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="account_id" referencedTableName="accounts" validate="true"/>
+    </changeSet>
+    <changeSet author="lekha (generated)" id="1656674279256-46">
+        <addForeignKeyConstraint baseColumnNames="account_id" baseTableName="update_tokens" constraintName="update_tokens_ibfk_1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="CASCADE" referencedColumnNames="account_id" referencedTableName="accounts" validate="true"/>
+    </changeSet>
+
+    <include file="changelog/alter-fullname.mysql.sql"/>
+    <include file="changelog/create-trigger-event.mysql.sql"/>
+    
+    <include file="changelog/alter-hostels.mysql.sql"/>
+</databaseChangeLog>
