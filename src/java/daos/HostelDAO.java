@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import utilities.Colors;
 import utilities.DatabaseConnection;
 import utilities.StringUtil;
 
@@ -45,23 +46,73 @@ public class HostelDAO implements DAO<Hostel>, Serializable {
                 pst.setString(7, slug);
                 
                 int affectedCol = pst.executeUpdate();
+                System.out.println(affectedCol + "affected");
                 if (affectedCol == 1) {
-                    System.out.println("Insert successfully");
+                    System.out.println(Colors.GREEN + "Insert successfully" + Colors.RESET);
+                    if (cn != null) {
+                        try {
+                            cn.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
                     return true;
                 } else {
+                    System.out.println(Colors.RED + "Insert failed" + Colors.RESET);
                     return false;
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(Colors.RED + "Insert failed" + Colors.RESET);
             return false;
         }
+        System.out.println(Colors.RED + "Insert failed" + Colors.RESET);
         return false;
     }
 
     @Override
     public boolean update(int id, HashMap<String, String> columnValuePair) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection cn = null;
+        try {
+            cn = DatabaseConnection.makeConnection();
+            if (cn != null) {
+                if (columnValuePair.size() > 0) {
+                    String set = "";
+                    ArrayList<String> setValues = new ArrayList();
+
+                    for (String column : columnValuePair.keySet()) {
+                        set = set + "  " + column + "=?";
+                        setValues.add(columnValuePair.get(column));
+                    }
+                    set = set.trim().replace("  ", ", ");
+
+                    String sql = "UPDATE Hostels\n"
+                            + "SET " + set + "\n"
+                            + "WHERE hostel_id=?";
+                    PreparedStatement pst = cn.prepareStatement(sql);
+
+                    for (int i = 0; i < setValues.size(); i++) {
+                        pst.setString(i + 1, setValues.get(i));
+                    }
+                    pst.setString(setValues.size() + 1, id + "");
+
+                    int affectedCol = pst.executeUpdate();
+                    if (affectedCol == 1) {
+                        System.out.println(Colors.GREEN + "Update successfully" + Colors.RESET);
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(Colors.RED + "Update failed" + Colors.RESET);
+            return false;
+        }
+        System.out.println(Colors.RED + "Update failed" + Colors.RESET);
+        return false;
     }
 
     @Override
@@ -90,10 +141,11 @@ public class HostelDAO implements DAO<Hostel>, Serializable {
                     String district = rs.getString("district");
                     String ward = rs.getString("ward");
                     String street = rs.getString("street");
+                    String address = rs.getString("address");
                     String name = rs.getString("name");
                     String hostel_slug = rs.getString("hostel_slug");
 
-                    hostel = new Hostel(hostel_id, owner_id, city, district, ward, street, name, hostel_slug);
+                    hostel = new Hostel(hostel_id, owner_id, city, district, ward, street, address, name, hostel_slug);
                 }
             }
         } catch (Exception e) {

@@ -8,19 +8,12 @@ public class Hostel implements Serializable {
     private String city; 
     private String district;
     private String ward; 
-    private String street; 
+    private String street;
+    private String address;
     private String name; 
     private String hostelSlug;
 
     public Hostel() {
-        this.hostelId = 0;
-        this.ownerId = 0;
-        this.city = "";
-        this.district = "";
-        this.ward = "";
-        this.street = "";
-        this.name = "";
-        this.hostelSlug = "";
     }
 
     public Hostel(int ownerId, String city, String district, String ward, String street, String name) {
@@ -39,6 +32,18 @@ public class Hostel implements Serializable {
         this.district = district;
         this.ward = ward;
         this.street = street;
+        this.name = name;
+        this.hostelSlug = hostelSlug;
+    }
+
+    public Hostel(int hostelId, int ownerId, String city, String district, String ward, String street, String address, String name, String hostelSlug) {
+        this.hostelId = hostelId;
+        this.ownerId = ownerId;
+        this.city = city;
+        this.district = district;
+        this.ward = ward;
+        this.street = street;
+        this.address = address;
         this.name = name;
         this.hostelSlug = hostelSlug;
     }
@@ -89,6 +94,14 @@ public class Hostel implements Serializable {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+    
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getName() {

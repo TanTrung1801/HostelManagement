@@ -85,6 +85,11 @@ public class hostelController extends HttpServlet {
                 return;
             }
             
+            request.setAttribute("hostelSlug", hostel.getHostelSlug());
+            
+            String breadcrumb = (String)request.getAttribute("breadcrumb");
+            request.setAttribute("breadcrumb", breadcrumb+"/"+hostel.getHostelSlug());
+            
             switch (splitter[5]) {
                 case "rooms":
                     System.out.println(Colors.YELLOW + "hostelController forward to roomController" + Colors.RESET);
@@ -96,6 +101,18 @@ public class hostelController extends HttpServlet {
                     //System.out.println(Colors.YELLOW + "owningController forward to hostelController" + Colors.RESET);
                     request.setAttribute("pageTitle", "Hostel Details");
                     request.setAttribute("homeDetails", "hostel/hostelDetails.jsp");
+                    String action = request.getParameter("action");
+                    if (action != null) {
+                        switch (request.getParameter("action")) {
+                            case "getUpdateForm":
+                                request.setAttribute("hostelDetailsContent", "hostelDetails-updateForm.jsp");
+                                break;
+
+                            case "getHostelDetails":
+                                request.setAttribute("hostelDetailsContent", "hostelDetails-details.jsp");
+                                break;
+                        }
+                    }
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     return;
 
@@ -108,7 +125,7 @@ public class hostelController extends HttpServlet {
                 case "create-room":
                     request.setAttribute("pageTitle", "Create Room");
                     request.setAttribute("homeDetails", "hostel/createRoom.jsp");
-                    //request.setAttribute("createHostelContent", "createHostel-form.jsp");
+                    request.setAttribute("createRoomContent", "createRoom-form.jsp");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     return;
             }
@@ -126,7 +143,31 @@ public class hostelController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String processingPath = (String) request.getAttribute("processingPath");
+        String contextPath = request.getContextPath();
+
+        String[] splitter = processingPath.split("/");
+
+        if(splitter[5].equals("rooms")){
+            System.out.println(Colors.YELLOW + "hostelController forward to roomController" + Colors.RESET);
+            request.getRequestDispatcher("roomController").forward(request, response);
+            return;
+        }
+
+        request.setAttribute("hasTools", true);
+        request.setAttribute("homeTools", "hostelTools.jsp");
+        System.out.println(request.getParameter("action"));
+        switch (request.getParameter("action")) {
+            case "createRoom":
+                System.out.println(Colors.YELLOW + "hostelController forward to createRoomServlet" + Colors.RESET);
+                request.getRequestDispatcher("createRoomServlet").forward(request, response);
+                return;
+
+            case "updateHostelDetails":
+                System.out.println(Colors.YELLOW + "hostelController forward to updateHostelDetailsServlet" + Colors.RESET);
+                request.getRequestDispatcher("updateHostelDetailsServlet").forward(request, response);
+                return;
+        }
     }
 
     /**

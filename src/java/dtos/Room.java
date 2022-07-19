@@ -12,6 +12,12 @@ public class Room implements Serializable {
     public Room() {
     }
 
+    public Room(int hostelId, String name, int maxContract) {
+        this.hostelId = hostelId;
+        this.name = name;
+        this.maxContract = maxContract;
+    }
+
     public Room(int hostelId, String name, String roomSlug, int maxContract) {
         this.hostelId = hostelId;
         this.name = name;

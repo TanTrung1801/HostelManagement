@@ -5,13 +5,23 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+
+<c:set var='splitter' value="${fn:split(requestScope.processingPath,'/')}" scope='page'/>
+
+<c:set var='currentPage' value="${splitter[fn:length(splitter)-1]}" scope='page'/>
+
+
+<li id="room-details" class="tool-page">
+    <a href="${pageContext.request.contextPath}/home/${splitter[1]}/hostels/${splitter[3]}/rooms/${splitter[5]}/room-details">Room Details</a>
+</li>
+
+<li id="contract-list" class="tool-page">
+    <a href="${pageContext.request.contextPath}/home/${splitter[1]}/hostels/${splitter[3]}/rooms/${splitter[5]}/contract-list">Contract List</a>
+</li>
+
+<li id="create-new-contract" class="tool-page">
+    <a href="${pageContext.request.contextPath}/home/${splitter[1]}/hostels/${splitter[3]}/rooms/${splitter[5]}/create-new-contract">Create New Contract</a>
+</li>

@@ -61,7 +61,7 @@ public class homeController extends HttpServlet {
             
             switch (acc.getStatus()) {
                 case 0:
-                    request.setAttribute("homeContent", "accountDisabled.jsp");
+                    request.setAttribute("homeContent", "disabledAccount.jsp");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     return;
 

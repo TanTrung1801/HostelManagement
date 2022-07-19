@@ -45,7 +45,7 @@ public class createHostelServlet extends HttpServlet {
             
             int    ownerId      = (Integer) session.getAttribute("loginId");
             
-            if (city!=null && district !=null && ward!=null && street !=null && name!=null){
+            if (city!=null && district !=null && ward!=null && street !=null && name!=null && !city.equals("") && !district.equals("") && !ward.equals("") && !street.equals("") && !name.equals("")){
                 Hostel hostel = new Hostel(ownerId, city, district, ward, street, name);
                 HostelDAO dao = new HostelDAO();
                 if(dao.getList("address", city+" - "+district+" - "+ward+" - "+street).isEmpty()){

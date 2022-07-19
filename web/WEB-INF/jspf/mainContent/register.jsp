@@ -42,19 +42,19 @@
                                 Username
                             </label>
                             <input type="text" name="username" id="username" placeholder="Username" class="form-control" required="" />
-                            <p>${ERROR_USERNAME}</p>
+                            <p style="color: red;">${ERROR_USERNAME}</p>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="pass">Password</label>
                             <input type="password" name="password" id="pass" placeholder="Password"
                                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" class="form-control" required />
-                            <p>${ERROR_PASSWORD}</p>
+                            <p style="color: red;">${ERROR_PASSWORD}</p>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="confirm">Confirm Password</label>
                             <input type="password" name="confirm" id="confirm" placeholder="Repeat your password"
                                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$" class="form-control" required />
-                            <p>${ERROR_CONFIRMPASSWORD}</p>
+                            <p style="color: red;">${ERROR_CONFIRMPASSWORD}</p>
                         </div>
 
                         <div class="form-group">
@@ -63,7 +63,7 @@
                                    pattern="[a-z0-9._%+-]+@(gmail.com|fpt.edu.vn|yahoo.com)" required=""
                                    title="Email addresses must not contain any upper letter and end with domains '@gmail.com' or '@fpt.edu.vn' or '@yahoo.com'"
                                    value='${email}' class="form-control" />
-                            <p>${ERROR_EMAIL}</p>
+                            <p style="color: red;">${ERROR_EMAIL}</p>
                         </div>
 
                         <div class="form-group">
@@ -72,7 +72,7 @@
                             </label>
                             <input type="text" name="idCardNumber" id="idcardnumber" placeholder="ID Card Number"
                                    maxlength="16" class="form-control" />
-                            <p>${ERROR_IDCARDNUMBER}</p>
+                            <p style="color: red;">${ERROR_IDCARDNUMBER}</p>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="dateOfBirth">Date of Birth</label>
@@ -85,7 +85,7 @@
                             </label>
                             <input type="tel" name="phone" id="contact" placeholder="Contact no" maxlength="10"
                                    pattern="[0-9]{10,10}" class="form-control" />
-                            <p>${ERROR_PHONE}</p>
+                            <p style="color: red;">${ERROR_PHONE}</p>
                         </div>
 
 
@@ -99,7 +99,7 @@
                                    style="padding-left: 2.5rem; padding-right: 2.5rem;background-color:#628272"></input>
 
                         </div>
-                        <p>${ERROR}</p>
+                        <p style="color: red;">${ERROR}</p>
 
 
 

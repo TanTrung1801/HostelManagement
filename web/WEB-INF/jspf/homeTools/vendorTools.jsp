@@ -21,9 +21,4 @@
     <a href="${pageContext.request.contextPath}/home/${splitter[1]}/create-hostel">Create Hostel</a>
 </li>
 
-<script>
-    $(document).ready(function () {
-        $(".tool-page").removeClass("active");
-        $("#${currentPage}").addClass("active");
-    });
-</script>
+

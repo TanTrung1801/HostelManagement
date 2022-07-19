@@ -56,6 +56,34 @@
         <servlet-name>roomController</servlet-name>
         <servlet-class>controllers.roomController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>tenantController</servlet-name>
+        <servlet-class>controllers.tenantController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>servlets.logoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>unverifiedAccountController</servlet-name>
+        <servlet-class>controllers.unverifiedAccountController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sendEmailVerificationServlet</servlet-name>
+        <servlet-class>servlets.sendEmailVerificationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>registerServlet</servlet-name>
+        <servlet-class>servlets.registerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createRoomServlet</servlet-name>
+        <servlet-class>servlets.createRoomServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateHostelDetailsServlet</servlet-name>
+        <servlet-class>servlets.updateHostelDetailsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/loginController</url-pattern>
@@ -103,6 +131,34 @@
     <servlet-mapping>
         <servlet-name>roomController</servlet-name>
         <url-pattern>/roomController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>tenantController</servlet-name>
+        <url-pattern>/tenantController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>unverifiedAccountController</servlet-name>
+        <url-pattern>/unverifiedAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sendEmailVerificationServlet</servlet-name>
+        <url-pattern>/sendEmailVerificationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>registerServlet</servlet-name>
+        <url-pattern>/registerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createRoomServlet</servlet-name>
+        <url-pattern>/createRoomServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateHostelDetailsServlet</servlet-name>
+        <url-pattern>/updateHostelDetailsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

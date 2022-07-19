@@ -38,6 +38,13 @@ public class AccountDAO implements DAO<Account>, Serializable {
                 int affectedCol = pst.executeUpdate();
                 if (affectedCol == 1) {
                     System.out.println(Colors.GREEN + "Insert successfully" + Colors.RESET);
+                    if (cn != null) {
+                        try {
+                            cn.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
                     return true;
                 } else {
                     System.out.println(Colors.RED + "Insert failed" + Colors.RESET);

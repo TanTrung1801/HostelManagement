@@ -5,6 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+
+<c:set var='splitter' value="${fn:split(requestScope.processingPath,'/')}" scope='page'/>
+
+<c:set var='currentPage' value="${splitter[fn:length(splitter)-1]}" scope='page'/>
 
 <nav id="menu">
     <ul class="list-unstyled components">
@@ -12,6 +18,9 @@
     </ul>
 </nav>
 
-    <script>
-        //something to add "active" class
-    </script>
+<script>
+    $(document).ready(function () {
+        $(".tool-page").removeClass("active");
+        $("#${currentPage}").addClass("active");
+    });
+</script>

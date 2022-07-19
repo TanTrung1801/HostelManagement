@@ -562,8 +562,8 @@ Pagination style
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: #4fa97c;
-    border-color: #4fa97c;
+    background-color: #628272;
+    border-color: #628272;
 }
 
 .page-link {
@@ -584,7 +584,7 @@ Pagination style
     padding: .5rem .75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #4fa97c;
+    color: #628272;
     background-color: #fff;
     border: 1px solid #dee2e6;
 }

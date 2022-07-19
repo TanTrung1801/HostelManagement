@@ -6,4 +6,4 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<h3>Your account is disabled, please contact an us if you think this is a mistake</h3>
+<h3>Your account is disabled, please contact web administrator if you think this is a mistake</h3>

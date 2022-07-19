@@ -74,12 +74,15 @@ public class vendorController extends HttpServlet {
         String[] splitter = processingPath.split("/");
 
         String[] rights;
+        String role;
         
         if(splitter[2].equals("owning")){
             rights=vendorRights;
+            role = "owner";
         }
         else{
             rights=vendorRights; //SUBJECT TO CHANGE: get manager's right from database
+            role = "manager";
         }
         
         if (splitter.length == 3) {
@@ -88,6 +91,7 @@ public class vendorController extends HttpServlet {
         } else {
             request.setAttribute("hasTools", true);
             request.setAttribute("homeTools", "vendorTools.jsp");
+            request.setAttribute("breadcrumb", "/home/"+role);
             request.setAttribute("rights", rights);
             switch (splitter[3]) {
                 case "hostels":
@@ -127,6 +131,12 @@ public class vendorController extends HttpServlet {
 
         String[] splitter = processingPath.split("/");
 
+        if(splitter[3].equals("hostels")){
+            System.out.println(Colors.YELLOW + "vendorController forward to hostelController" + Colors.RESET);
+            request.getRequestDispatcher("hostelController").forward(request, response);
+            return;
+        }
+        
         String[] rights;
         
         if(splitter[2].equals("owning")){
